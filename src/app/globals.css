@@ -1,48 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #0D0D0E;
+  --background: #040814;
   --foreground: #FAF9F5;
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
     color: #FAF9F5;
-    background: #0D0D0E;
+    background-color: #040814;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, .font-serif {
+    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
     letter-spacing: -0.015em;
   }
 }
 
-/* Custom scrollbar */
+/* Custom Luxury Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0D0D0E;
+  background: #040814;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2C2F36;
-  border-radius: 3px;
+  background: #1C2F60;
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #B89B72;
+  background: #D4AF37;
 }
 
-/* Luxury subtle grain overlay */
-.grain-overlay {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
-  background-size: 24px 24px;
+/* Luxury visual accents */
+.bg-mesh-luxury {
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(15, 118, 110, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(224, 109, 83, 0.05) 0%, transparent 50%);
 }
 
-/* Gradient accents */
 .text-gold-gradient {
-  background: linear-gradient(135deg, #FAF9F5 0%, #E3DDD3 50%, #B89B72 100%);
+  background: linear-gradient(135deg, #FFFFFF 0%, #FAF9F5 30%, #E5C98D 70%, #D4AF37 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.text-teal-gradient {
+  background: linear-gradient(135deg, #FAF9F5 0%, #5EEAD4 50%, #0F766E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-coral-gradient {
+  background: linear-gradient(135deg, #FAF9F5 0%, #EB6B47 60%, #B8472E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glassmorphism containers */
+.glass-panel {
+  background: rgba(14, 21, 40, 0.65);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(28, 47, 96, 0.5);
+}
+
+.glass-panel-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-panel-hover:hover {
+  background: rgba(18, 32, 70, 0.85);
+  border-color: rgba(212, 175, 55, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px -10px rgba(4, 8, 20, 0.8), 0 0 20px rgba(212, 175, 55, 0.1);
+}
+
+.glass-panel-teal {
+  background: rgba(4, 47, 46, 0.35);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(20, 184, 166, 0.25);
+}
+
+/* Subtle dot texture */
+.dot-pattern {
+  background-image: radial-gradient(rgba(212, 175, 55, 0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.teal-dot-pattern {
+  background-image: radial-gradient(rgba(20, 184, 166, 0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
 }

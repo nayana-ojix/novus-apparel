@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     default: "NOVUS APPAREL | Global Apparel Manufacturing & Textile Innovation",
   },
   description:
-    "Novus Apparel Limited — A member of the Sri Dhanalakshmi Group (est. 1971, USD $160M). Providing vertical end-to-end solutions from design to advanced apparel manufacturing with global presence across India, USA, and China.",
+    "Novus Apparel Limited — A member of the Sri Dhanalakshmi Group (est. 1971, USD $160M Group Turnover). Providing vertical end-to-end solutions from technical fiber research and spinning to advanced apparel manufacturing with global presence across India, USA, and China.",
   keywords: [
     "Novus Apparel",
     "Apparel Manufacturing",
@@ -19,13 +19,15 @@ export const metadata: Metadata = {
     "Technical Fabrics",
     "Global Sourcing",
     "Garment Innovation",
+    "Sustainable Textile Manufacturing",
+    "Wind Powered Mills",
   ],
   authors: [{ name: "Novus Apparel Limited" }],
   openGraph: {
     title: "NOVUS APPAREL | Engineering Excellence. Creating Comfort.",
-    description: "Vertical apparel manufacturing & textile innovation across India, USA, and China.",
+    description: "Vertical apparel manufacturing & textile innovation across India, USA, and China. Member of Sri Dhanalakshmi Group (est. 1971, USD $160M).",
     url: "https://novusapparels.com",
-    siteName: "Novus Apparel",
+    siteName: "Novus Apparel Limited",
     locale: "en_US",
     type: "website",
   },
@@ -38,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="bg-novus-black text-novus-ivory font-sans antialiased selection:bg-novus-beige-accent selection:text-novus-black min-h-screen flex flex-col overflow-x-hidden">
+      <body className="bg-novus-navy-deepest text-novus-ivory font-sans antialiased selection:bg-novus-gold selection:text-novus-navy-deepest min-h-screen flex flex-col overflow-x-hidden">
         <Navbar />
         <main className="flex-grow">{children}</main>
         <Footer />

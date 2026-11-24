@@ -1,212 +1,233 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Sparkles, CheckCircle } from "lucide-react";
+import { ArrowUpRight, Sparkles, CheckCircle, ShieldCheck, Flame, Layers } from "lucide-react";
+import FadeIn from "@/components/motion/FadeIn";
+import Badge from "@/components/ui/Badge";
 import { PRODUCT_COLLECTIONS } from "@/data/company";
-
-export const metadata = {
-  title: "Products & Innovation | Renaissance™ & Technical Fabrics",
-  description:
-    "Discover Novus Apparel's product portfolio: Renaissance™ comfort technology, 100% cotton twills, micro-polyester blends, and sporting goods fabrics.",
-};
 
 const TECHNICAL_FINISHES = [
   {
     name: "Hydrophilic Moisture Dispersal",
-    category: "Thermal Comfort",
-    desc: "Rapid capillary dispersion drawing perspiration away from the skin for all-day thermal equilibrium.",
+    category: "Thermal Equilibrium",
+    desc: "Rapid capillary dispersion drawing perspiration away from the skin for all-day thermal equilibrium in high-performance garments.",
+    accent: "text-novus-teal-light",
   },
   {
-    name: "Dual-Core Elasticity",
-    category: "Kinetic Retention",
-    desc: "Multi-component yarn structure providing instant recovery without sagging or baggy knees/elbows.",
+    name: "Dual-Core Kinetic Elasticity",
+    category: "Shape Retention",
+    desc: "Multi-component yarn structure providing instantaneous elastic recovery without bagging at knees or elbows after extended wear.",
+    accent: "text-novus-gold",
   },
   {
-    name: "Silken Soft-Touch Handfeel",
-    category: "Sensory Elegance",
-    desc: "Bio-polished and micro-sanded finishing creating a cashmere-like tactile touch on compact cotton weaves.",
+    name: "Silken Cashmere Handfeel",
+    category: "Tactile Luxury",
+    desc: "Proprietary bio-polishing and micro-sanded finishing creating a whisper-soft, luxurious hand on compact cotton and viscose blends.",
+    accent: "text-novus-champagne",
   },
   {
     name: "Wrinkle-Resistant Easy Care",
     category: "Executive Performance",
-    desc: "Cross-linked molecular finishing keeping shirts crisp through international business travel and humid climates.",
+    desc: "Advanced molecular cross-linking finishing that keeps executive shirting crisp and wrinkle-free through international travel and humid climates.",
+    accent: "text-novus-coral",
   },
 ];
 
 export default function ProductsInnovationPage() {
   return (
-    <div className="pt-28 pb-24 bg-novus-black">
+    <div className="pt-28 pb-24 bg-novus-navy-deepest text-novus-ivory overflow-hidden">
       {/* Header */}
-      <section className="px-6 lg:px-12 py-16 lg:py-24 max-w-7xl mx-auto border-b border-novus-charcoal">
+      <section className="px-6 lg:px-12 py-16 lg:py-24 max-w-7xl mx-auto border-b border-novus-navy-border/60">
         <div className="max-w-3xl space-y-4">
-          <span className="text-xs font-mono uppercase tracking-[0.25em] text-novus-gold">
-            Material Science & Collections
-          </span>
-          <h1 className="font-serif text-4xl sm:text-6xl text-novus-ivory font-light leading-tight">
-            Products & Material Innovation
-          </h1>
-          <p className="text-base sm:text-lg text-novus-beige/80 font-light leading-relaxed">
-            From our flagship Renaissance™ concept line to engineered greige goods and high-twist compact shirting, we design textiles that honor human comfort and withstand demanding lifestyles.
-          </p>
+          <FadeIn direction="down">
+            <Badge variant="gold">Material Science & Collections</Badge>
+          </FadeIn>
+          <FadeIn direction="up" delay={0.1}>
+            <h1 className="font-serif text-4xl sm:text-6xl text-novus-ivory font-light leading-tight">
+              Products & <br />
+              <span className="italic font-normal text-gold-gradient">
+                Material Innovation.
+              </span>
+            </h1>
+          </FadeIn>
+          <FadeIn direction="up" delay={0.2}>
+            <p className="text-base sm:text-lg text-novus-ivory-warm/85 font-light leading-relaxed">
+              From our flagship Renaissance™ concept line to engineered bottom-weight greige and high-twist compact combed shirting, we design textiles that honor human comfort and withstand demanding modern lifestyles.
+            </p>
+          </FadeIn>
         </div>
       </section>
 
       {/* Renaissance Highlight Section */}
       <section className="px-6 lg:px-12 py-20 max-w-7xl mx-auto">
-        <div className="bg-novus-richblack border border-novus-charcoal p-8 lg:p-14 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="bg-novus-navy-dark border border-novus-navy-border/80 p-8 sm:p-12 lg:p-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center shadow-card-luxury">
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 bg-novus-charcoal text-[11px] font-mono text-novus-gold uppercase tracking-widest">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Flagship Concept</span>
-            </div>
-            <h2 className="font-serif text-3xl sm:text-4xl text-novus-ivory font-light">
-              Renaissance™ — Technology to Complement Comfort
-            </h2>
-            <div className="w-16 h-[1.5px] bg-novus-gold"></div>
-            <p className="text-sm text-novus-beige/80 leading-relaxed font-light">
-              We honor customer comfort as paramount. Under the Renaissance banner, we invite global brand partners to co-create revolutionary material applications for apparel lifestyle and sporting goods.
-            </p>
-            <p className="text-sm text-novus-beige/80 leading-relaxed font-light">
-              By combining our proprietary fiber compounding, micro-polyester blends, and dual-core recovery filaments with in-depth consumer trends, Renaissance transforms standard everyday wear into an effortless sensory experience.
-            </p>
+            <FadeIn direction="right">
+              <Badge variant="teal">Flagship Concept Line</Badge>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-novus-ivory font-light mt-2">
+                Renaissance™ — Technology to Complement Comfort
+              </h2>
+              <div className="w-16 h-[2px] bg-gradient-to-r from-novus-gold to-transparent my-4" />
+              <p className="text-sm sm:text-base text-novus-ivory-warm/80 leading-relaxed font-light">
+                We honor customer comfort as paramount. Under the Renaissance banner, we invite global brand partners to co-create revolutionary material applications for apparel lifestyle and sporting goods.
+              </p>
+              <p className="text-sm sm:text-base text-novus-ivory-warm/80 leading-relaxed font-light">
+                By combining our proprietary fiber compounding, micro-polyester blends, and dual-core recovery filaments with in-depth consumer trends, Renaissance transforms standard everyday wear into an effortless sensory experience.
+              </p>
 
-            <div className="grid grid-cols-2 gap-3 pt-2 text-xs font-mono text-novus-gold">
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="w-4 h-4 text-novus-gold" />
-                <span>Micro-Polyester Weaves</span>
+              <div className="grid grid-cols-2 gap-3 pt-3 text-xs font-mono text-novus-champagne">
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-4 h-4 text-novus-gold" />
+                  <span>Micro-Polyester Weaves</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-4 h-4 text-novus-gold" />
+                  <span>Dual-Core Elasticity</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-4 h-4 text-novus-gold" />
+                  <span>Rapid Moisture Dispersal</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-4 h-4 text-novus-gold" />
+                  <span>Dynamic Shape Memory</span>
+                </div>
               </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="w-4 h-4 text-novus-gold" />
-                <span>Dual-Core Recovery</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="w-4 h-4 text-novus-gold" />
-                <span>Rapid Capillary Wicking</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="w-4 h-4 text-novus-gold" />
-                <span>Featherweight Soft Hand</span>
-              </div>
-            </div>
+            </FadeIn>
           </div>
-          <div className="lg:col-span-5 relative h-96 w-full border border-novus-charcoal overflow-hidden group">
-            <Image
-              src={PRODUCT_COLLECTIONS[0].image}
-              alt="Renaissance Textile Innovation"
-              fill
-              className="object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-90"
-            />
+
+          <div className="lg:col-span-5 relative h-96 w-full border border-novus-navy-border overflow-hidden">
+            <FadeIn direction="left">
+              <Image
+                src="https://images.unsplash.com/photo-1523381294911-8d3cead13475?auto=format&fit=crop&w=1200&q=85"
+                alt="Renaissance Technical Fabric Collection"
+                fill
+                className="object-cover object-center filter contrast-105 brightness-95 transition-all duration-700 hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-novus-navy-deepest/80 via-transparent to-transparent" />
+            </FadeIn>
           </div>
         </div>
       </section>
 
-      {/* Comprehensive Product Showcase */}
-      <section className="px-6 lg:px-12 py-20 max-w-7xl mx-auto border-t border-novus-charcoal">
-        <div className="max-w-2xl mb-12 space-y-3">
-          <span className="text-xs font-mono uppercase tracking-[0.25em] text-novus-gold">
-            Fabric Catalog & Garment Categories
-          </span>
+      {/* Product Catalog Grid */}
+      <section className="px-6 lg:px-12 py-20 max-w-7xl mx-auto border-t border-novus-navy-border/60">
+        <div className="max-w-3xl mb-16 space-y-3">
+          <Badge variant="gold">Fabric Portfolios</Badge>
           <h2 className="font-serif text-3xl sm:text-4xl text-novus-ivory font-light">
-            Engineered Textile Categories
+            Engineered Material Categories
           </h2>
-          <p className="text-xs text-novus-muted font-light">
-            Developed with meticulous attention to yarn count, tensile strength, and color fastness.
+          <p className="text-sm text-novus-muted font-light">
+            Engineered across our spinning, sizing, and wide-width weaving facilities in India and specialized polymer R&D in Shanghai.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {PRODUCT_COLLECTIONS.map((item, idx) => (
-            <div
-              key={idx}
-              className="bg-novus-richblack border border-novus-charcoal overflow-hidden group hover:border-novus-gold/40 transition-colors flex flex-col justify-between"
-            >
-              <div className="relative h-72 w-full overflow-hidden bg-novus-charcoal">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-90"
-                />
-                <div className="absolute top-4 left-4 bg-novus-black/80 backdrop-blur-md px-3 py-1 text-[10px] font-mono tracking-widest text-novus-gold uppercase">
-                  {item.category}
+            <FadeIn key={idx} delay={idx * 0.15}>
+              <div className="bg-novus-navy-dark border border-novus-navy-border hover:border-novus-gold/50 transition-all duration-500 overflow-hidden flex flex-col h-full shadow-card-luxury">
+                <div className="relative h-64 sm:h-72 w-full border-b border-novus-navy-border overflow-hidden">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover object-center filter contrast-105 brightness-95 transition-transform duration-700 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-novus-navy-dark via-transparent to-transparent opacity-80" />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-novus-navy-deepest/90 border border-novus-gold/30 text-[10px] font-mono uppercase tracking-wider text-novus-gold">
+                      {item.category}
+                    </span>
+                  </div>
                 </div>
-              </div>
-              <div className="p-8 space-y-4 flex-grow flex flex-col justify-between">
-                <div className="space-y-2">
-                  <h3 className="font-serif text-2xl text-novus-ivory font-medium">{item.title}</h3>
-                  <p className="text-xs font-mono text-novus-beige-accent">{item.tagline}</p>
-                  <p className="text-xs text-novus-beige/80 font-light leading-relaxed pt-2">
-                    {item.description}
-                  </p>
-                </div>
-                <div className="pt-4 border-t border-novus-charcoal space-y-2">
-                  <span className="text-[10px] uppercase font-mono tracking-widest text-novus-muted block">
-                    Technical Attributes
-                  </span>
-                  <div className="flex flex-wrap gap-2">
-                    {item.specs.map((spec, sIdx) => (
-                      <span
-                        key={sIdx}
-                        className="text-[10px] uppercase font-mono px-2.5 py-1 bg-novus-charcoal text-novus-beige-dark"
-                      >
-                        {spec}
-                      </span>
-                    ))}
+
+                <div className="p-8 space-y-4 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="font-serif text-2xl text-novus-ivory font-medium">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs font-mono text-novus-champagne italic mt-1">
+                      {item.tagline}
+                    </p>
+                    <p className="text-xs sm:text-sm text-novus-ivory-warm/80 font-light leading-relaxed mt-3">
+                      {item.description}
+                    </p>
+                  </div>
+
+                  <div className="pt-4 border-t border-novus-navy-border/60">
+                    <p className="text-[10px] font-mono uppercase tracking-widest text-novus-muted mb-2">
+                      Key Technical Specs
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {item.specs.map((spec, sIdx) => (
+                        <span
+                          key={sIdx}
+                          className="px-2.5 py-1 text-xs font-mono bg-novus-navy-surface text-novus-ivory-warm border border-novus-navy-border"
+                        >
+                          {spec}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </FadeIn>
           ))}
         </div>
       </section>
 
-      {/* Advanced Performance Finishes */}
-      <section className="px-6 lg:px-12 py-20 max-w-7xl mx-auto border-t border-novus-charcoal">
-        <div className="max-w-2xl mb-12 space-y-3">
-          <span className="text-xs font-mono uppercase tracking-[0.25em] text-novus-gold">
-            Applied Chemistry
-          </span>
+      {/* Technical Finishing Formulations */}
+      <section className="px-6 lg:px-12 py-20 max-w-7xl mx-auto border-t border-novus-navy-border/60">
+        <div className="max-w-3xl mb-12 space-y-3">
+          <Badge variant="coral">Advanced Chemistry</Badge>
           <h2 className="font-serif text-3xl sm:text-4xl text-novus-ivory font-light">
-            Performance Finishes & Treatments
+            Proprietary Finishing & Performance Technologies
           </h2>
-          <p className="text-xs text-novus-muted font-light">
-            Formulated to meet strict eco-toxicity standards while delivering functional superiority.
+          <p className="text-sm text-novus-muted font-light">
+            Tailoring tactile handfeel, thermodynamic moisture handling, and wrinkle recovery.
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {TECHNICAL_FINISHES.map((finish, fIdx) => (
-            <div
-              key={fIdx}
-              className="p-6 bg-novus-charcoal/30 border border-novus-charcoal space-y-3 hover:border-novus-gold/40 transition-colors"
-            >
-              <span className="text-[10px] font-mono uppercase tracking-widest text-novus-gold">
-                {finish.category}
-              </span>
-              <h4 className="font-serif text-lg text-novus-ivory font-medium">{finish.name}</h4>
-              <p className="text-xs text-novus-muted font-light leading-relaxed">{finish.desc}</p>
-            </div>
+          {TECHNICAL_FINISHES.map((finish, idx) => (
+            <FadeIn key={idx} delay={idx * 0.1}>
+              <div className="p-6 bg-novus-navy-dark/70 border border-novus-navy-border hover:border-novus-gold/40 transition-all duration-300 space-y-3 h-full flex flex-col justify-between">
+                <div>
+                  <span className={`text-[10px] font-mono uppercase tracking-widest block mb-1 ${finish.accent}`}>
+                    {finish.category}
+                  </span>
+                  <h4 className="font-serif text-xl text-novus-ivory font-medium">
+                    {finish.name}
+                  </h4>
+                  <p className="text-xs text-novus-ivory-warm/75 font-light leading-relaxed mt-2">
+                    {finish.desc}
+                  </p>
+                </div>
+              </div>
+            </FadeIn>
           ))}
         </div>
       </section>
 
-      {/* Inquiry CTA */}
-      <section className="px-6 lg:px-12 py-16 max-w-7xl mx-auto border-t border-novus-charcoal text-center">
-        <div className="max-w-xl mx-auto space-y-4">
-          <h3 className="font-serif text-3xl text-novus-ivory font-light">
-            Request Swatches & Material Specs
-          </h3>
-          <p className="text-xs text-novus-beige/80 font-light leading-relaxed">
-            Our material sampling team ships physical swatches, lab dips, and technical spec sheets directly to your corporate design studio.
-          </p>
-          <div className="pt-2">
-            <Link
-              href="/contact"
-              className="inline-flex items-center space-x-2 px-8 py-3.5 bg-novus-beige hover:bg-novus-gold text-novus-black text-xs uppercase tracking-[0.2em] font-semibold transition-all"
-            >
-              <span>Order Material Swatch Kit</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </Link>
+      {/* Call to Action */}
+      <section className="px-6 lg:px-12 pt-12 max-w-7xl mx-auto">
+        <div className="bg-gradient-to-r from-novus-navy-surface via-novus-navy-dark to-novus-navy-surface border border-novus-navy-border p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-6 shadow-card-luxury">
+          <div className="space-y-1 text-center md:text-left">
+            <h3 className="font-serif text-2xl sm:text-3xl text-novus-ivory font-light">
+              Request Fabric Swatches & Technical Data Sheets
+            </h3>
+            <p className="text-xs sm:text-sm text-novus-muted font-light">
+              Our material specialists in Bangalore and Shanghai ship custom physical swatches directly to international design studios.
+            </p>
           </div>
+          <Link
+            href="/contact"
+            className="group shrink-0 inline-flex items-center space-x-2.5 px-6 py-3.5 bg-gradient-to-r from-novus-champagne to-novus-gold text-novus-navy-deepest text-xs uppercase tracking-[0.2em] font-semibold hover:from-white hover:to-novus-champagne transition-all shadow-gold-glow"
+          >
+            <span>Request Swatch Sample Pack</span>
+            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </Link>
         </div>
       </section>
     </div>
