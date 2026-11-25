@@ -1,196 +1,166 @@
+"use client";
+
 import Link from "next/link";
-import { ArrowUpRight, Mail, MapPin, Wind, ShieldCheck, Globe2 } from "lucide-react";
+import { ArrowUp, Mail, Phone, MapPin, Globe2, Layers, ArrowUpRight } from "lucide-react";
+
+const NAV_LINKS = [
+  { label: "01 • The Novus Story", href: "/#story" },
+  { label: "02 • What We Do", href: "/#capabilities" },
+  { label: "03 • The Novus Thread Journey", href: "/#thread-journey" },
+  { label: "04 • Manufacturing Network", href: "/manufacturing" },
+  { label: "05 • Innovation & Technology", href: "/#innovation" },
+  { label: "06 • Founding Leadership", href: "/#leadership" },
+  { label: "07 • Global Presence", href: "/#global" },
+  { label: "08 • Business Enquiry", href: "/#contact" },
+];
+
+const GLOBAL_OFFICES = [
+  {
+    city: "Bangalore",
+    country: "India",
+    role: "Global Headquarters",
+    address: [
+      "Novus Apparel Limited",
+      "#23, Siva Arcade (3rd Floor), 29th Main",
+      "1st Cross, 1st Stage, BTM Layout",
+      "Bangalore – 560068, Karnataka, India",
+    ],
+    emails: ["chaand@novusapparels.com", "vasanthkumar@novusapparels.com"],
+    phone: "+91 99808 12727",
+  },
+  {
+    city: "North Brunswick",
+    country: "United States",
+    role: "Americas Client Relations",
+    address: [
+      "Novus Apparel Limited",
+      "Suite #1, 825 Georges Rd",
+      "North Brunswick, NJ – 08902",
+      "United States of America",
+    ],
+    emails: ["chaand@novusapparels.com"],
+  },
+  {
+    city: "Shanghai",
+    country: "China",
+    role: "Technical Sourcing & Fabric R&D",
+    address: [
+      "Novus Apparel Limited / Newwell Textiles",
+      "Room #1109, Yuzhou Plaza #299, Jingang Road",
+      "Pudong New District",
+      "Shanghai – 201206, China",
+    ],
+    emails: ["chaand@novusapparels.com"],
+    phone: "+86-021-68970132",
+  },
+];
 
 export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <footer className="bg-atelier-obsidian border-t border-white/10 text-gray-400 font-sans relative overflow-hidden">
-      {/* Subtle atmospheric ambient glows */}
-      <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-[160px] pointer-events-none" />
-      <div className="absolute bottom-0 right-10 w-[500px] h-[500px] bg-atelier-gold/5 rounded-full blur-[140px] pointer-events-none" />
-
-      {/* Top Architectural Statement */}
-      <div className="border-b border-white/10 py-16 lg:py-20 relative z-10">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
-          <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] font-mono text-atelier-gold uppercase tracking-widest">
-              <span>Sri Dhanalakshmi Group · Est. 1971 · USD $160M</span>
-            </div>
-            <h3 className="font-syne text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight uppercase leading-[0.98]">
-              Ready to engineer your next <br />
-              <span className="font-italiana italic text-atelier-champagne lowercase font-normal text-4xl sm:text-5xl lg:text-6xl">
-                high-textile
-              </span>{" "}
-              collection?
-            </h3>
-            <p className="text-sm text-gray-400 max-w-xl font-light">
-              We bridge raw fiber science, vertical spinning, air-jet weaving, and cross-border manufacturing agility to create benchmark comfort for global fashion brands.
-            </p>
-          </div>
-
-          <Link
-            href="/contact"
-            className="group shrink-0 inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-atelier-champagne via-atelier-gold to-atelier-gold hover:from-white hover:to-atelier-champagne text-black text-xs font-syne font-bold uppercase tracking-wider transition-all duration-300 shadow-gold-glow"
-          >
-            <span>Consult Executive Atelier</span>
-            <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </Link>
-        </div>
-      </div>
-
-      {/* Main Multi-Column Directory */}
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-12 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 relative z-10">
-        {/* Brand Column */}
-        <div className="lg:col-span-4 space-y-6">
-          <Link href="/" className="inline-block group">
-            <div className="flex items-center gap-2">
-              <span className="font-syne text-3xl font-black tracking-tighter text-white group-hover:text-atelier-champagne transition-colors">
-                NOVUS
-              </span>
-              <span className="w-2 h-2 rounded-full bg-atelier-gold" />
-            </div>
-            <span className="block text-[9px] font-mono tracking-widest text-atelier-gold uppercase font-medium mt-0.5">
-              Apparel Limited // Manufacturing Atelier
+    <footer className="bg-charcoal text-cream relative z-10 border-t border-sand/30 overflow-hidden">
+      {/* Top Banner: Monumental Brand Statement */}
+      <div className="border-b border-cream/10 py-14 lg:py-20">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+          <div>
+            <span className="text-[11px] font-mono uppercase tracking-ultra text-burnt-light font-bold block mb-2">
+              SRI DHANALAKSHMI GROUP • ESTABLISHED 1971
             </span>
-          </Link>
-          <p className="text-xs text-gray-400 leading-relaxed font-light">
-            Extensive R&D and global manufacturing company providing vertical end-to-end solutions from technical polymer research, spinning, and weaving to finished lifestyle and sporting apparel.
-          </p>
-          <div className="space-y-2 pt-2 text-xs font-mono">
-            <div className="flex items-center gap-2 text-atelier-emerald">
-              <Wind className="w-3.5 h-3.5" />
-              <span>100% Wind-Assisted Clean Energy Grid</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-400">
-              <ShieldCheck className="w-3.5 h-3.5 text-atelier-gold" />
-              <span>Corporate Motto: <strong className="text-white ml-1 font-syne">MAKE A DIFFERENCE.</strong></span>
-            </div>
-          </div>
-        </div>
-
-        {/* Directory Navigation */}
-        <div className="lg:col-span-2 space-y-4">
-          <h4 className="text-[11px] font-mono uppercase tracking-widest text-white border-b border-white/10 pb-2">
-            Archive Index
-          </h4>
-          <ul className="space-y-2.5 text-xs font-mono">
-            <li>
-              <Link href="/about" className="hover:text-atelier-gold transition-colors flex items-center gap-2">
-                <span className="text-gray-600 text-[10px]">01</span>
-                <span>Corporate Archive</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/leadership" className="hover:text-atelier-gold transition-colors flex items-center gap-2">
-                <span className="text-gray-600 text-[10px]">02</span>
-                <span>Leadership</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/products-innovation" className="hover:text-atelier-gold transition-colors flex items-center gap-2">
-                <span className="text-gray-600 text-[10px]">03</span>
-                <span>Renaissance™ Line</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/technology-partners" className="hover:text-atelier-gold transition-colors flex items-center gap-2">
-                <span className="text-gray-600 text-[10px]">04</span>
-                <span>Technology</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/sustainability" className="hover:text-atelier-gold transition-colors flex items-center gap-2">
-                <span className="text-gray-600 text-[10px]">05</span>
-                <span>Clean Energy</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/global-presence" className="hover:text-atelier-gold transition-colors flex items-center gap-2">
-                <span className="text-gray-600 text-[10px]">06</span>
-                <span>Global Corridors</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/contact" className="hover:text-atelier-gold transition-colors flex items-center gap-2">
-                <span className="text-gray-600 text-[10px]">07</span>
-                <span>Executive Dialogue</span>
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        {/* Strategic Hubs */}
-        <div className="lg:col-span-3 space-y-4">
-          <h4 className="text-[11px] font-mono uppercase tracking-widest text-white border-b border-white/10 pb-2">
-            Strategic Centers
-          </h4>
-          <div className="space-y-4 text-xs font-light">
-            <div>
-              <p className="text-white font-medium flex items-center gap-1.5 font-syne">
-                <MapPin className="w-3.5 h-3.5 text-atelier-gold" />
-                <span>India // Global HQ</span>
-              </p>
-              <p className="text-gray-400 mt-0.5">BTM Layout 1st Stage, Bangalore - 560068</p>
-              <p className="text-atelier-champagne font-mono mt-0.5 text-[11px]">+91 99808 12727</p>
-            </div>
-            <div>
-              <p className="text-white font-medium flex items-center gap-1.5 font-syne">
-                <MapPin className="w-3.5 h-3.5 text-atelier-gold" />
-                <span>Americas // Liaison Hub</span>
-              </p>
-              <p className="text-gray-400 mt-0.5">North Brunswick, New Jersey - 08902, USA</p>
-              <p className="text-atelier-champagne font-mono mt-0.5 text-[11px]">+1 (732) 825-9000</p>
-            </div>
-            <div>
-              <p className="text-white font-medium flex items-center gap-1.5 font-syne">
-                <MapPin className="w-3.5 h-3.5 text-atelier-gold" />
-                <span>China // Material R&D</span>
-              </p>
-              <p className="text-gray-400 mt-0.5">Newwell Textiles, Pudong, Shanghai - 201206</p>
-              <p className="text-atelier-champagne font-mono mt-0.5 text-[11px]">+86-021-68970132</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Direct Executive Mailboxes */}
-        <div className="lg:col-span-3 space-y-4">
-          <h4 className="text-[11px] font-mono uppercase tracking-widest text-white border-b border-white/10 pb-2">
-            Executive Channels
-          </h4>
-          <div className="space-y-2.5 text-xs font-mono">
-            <a
-              href="mailto:chaand@novusapparels.com"
-              className="flex items-center gap-2 p-3 bg-white/5 border border-white/10 rounded-xl hover:border-atelier-gold text-atelier-linen hover:text-white transition-colors"
-            >
-              <Mail className="w-3.5 h-3.5 text-atelier-gold shrink-0" />
-              <span className="truncate">chaand@novusapparels.com</span>
-            </a>
-            <a
-              href="mailto:vasanthkumar@novusapparels.com"
-              className="flex items-center gap-2 p-3 bg-white/5 border border-white/10 rounded-xl hover:border-atelier-gold text-atelier-linen hover:text-white transition-colors"
-            >
-              <Mail className="w-3.5 h-3.5 text-atelier-gold shrink-0" />
-              <span className="truncate">vasanthkumar@novusapparels.com</span>
-            </a>
-          </div>
-
-          <div className="p-3 bg-atelier-surface/80 border border-white/10 rounded-xl mt-4">
-            <p className="text-[11px] font-mono text-atelier-emerald flex items-center gap-1.5">
-              <Globe2 className="w-3.5 h-3.5" />
-              <span>Seven Global Sourcing Nodes</span>
-            </p>
-            <p className="text-[10px] text-gray-400 mt-1 font-mono">
-              India · USA · China · Vietnam · Bangladesh · Jordan · Ethiopia
+            <h2 className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-cream uppercase">
+              NOVUS APPAREL LIMITED
+            </h2>
+            <p className="font-body text-cream/70 text-sm sm:text-base mt-2 max-w-2xl font-light leading-relaxed">
+              &ldquo;From Thread to Possibility.&rdquo; Providing vertical apparel solutions from technical fabric research and engineering to end garments through a disciplined partner manufacturing network.
             </p>
           </div>
+
+          <button
+            onClick={scrollToTop}
+            className="group inline-flex items-center gap-3 px-6 py-3 rounded-full bg-cream/10 hover:bg-cream/20 border border-cream/20 text-cream font-display text-xs uppercase tracking-wider font-semibold transition-all duration-300 shrink-0"
+          >
+            <span>Return to Top</span>
+            <ArrowUp className="w-4 h-4 transition-transform group-hover:-translate-y-0.5" />
+          </button>
         </div>
       </div>
 
-      {/* Bottom Legal Hairline Bar */}
-      <div className="border-t border-white/10 py-6 text-xs text-gray-500 relative z-10">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[11px]">
-          <p>© {new Date().getFullYear()} Novus Apparel Limited. Member of Sri Dhanalakshmi Group (Est. 1971, USD $160M).</p>
-          <div className="flex items-center gap-4 text-gray-400">
-            <span>Engineering Excellence. Creating Comfort.</span>
+      {/* Main Grid Content */}
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 py-14 lg:py-18">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12">
+          {/* Col 1: Brand & Heritage (4 cols) */}
+          <div className="lg:col-span-4 space-y-5">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-olive-light font-bold block">
+              HERITAGE & ECOSYSTEM
+            </span>
+            <p className="font-body text-xs sm:text-sm text-cream/70 leading-relaxed font-light">
+              NOVUS APPAREL is an apparel solutions business associated with Sri Dhanalakshmi Group (est. 1971). We unite East Asian polymer and greige innovation with South Asian vertical textile craftsmanship and agile partner manufacturing.
+            </p>
+            <div className="pt-2">
+              <Link
+                href="/manufacturing"
+                className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-burnt-light hover:text-cream font-semibold transition-colors"
+              >
+                <Layers className="w-4 h-4" />
+                <span>Explore Partner Manufacturing Network</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Col 2: Navigation Map (3 cols) */}
+          <div className="lg:col-span-3 space-y-4">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-burnt-light font-bold block">
+              SITE DIRECTORY
+            </span>
+            <ul className="space-y-2">
+              {NAV_LINKS.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="font-display text-xs uppercase tracking-wider text-cream/70 hover:text-cream transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Col 3: Verified Global Footprint (5 cols) */}
+          <div className="lg:col-span-5 space-y-4">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-sage font-bold block">
+              VERIFIED BUSINESS HUBS
+            </span>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-body">
+              {GLOBAL_OFFICES.map((off) => (
+                <div key={off.city} className="space-y-1.5 p-3 rounded-xl bg-cream/5 border border-cream/10">
+                  <span className="font-display font-bold uppercase text-cream block">
+                    {off.city}
+                  </span>
+                  <span className="text-[10px] font-mono text-burnt-light block">
+                    {off.country}
+                  </span>
+                  <p className="text-[11px] text-cream/60 font-light leading-snug">
+                    {off.role}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Disclaimer & Legal Bar */}
+        <div className="mt-14 pt-8 border-t border-cream/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] font-mono text-cream/50">
+          <div>
+            &copy; {new Date().getFullYear()} NOVUS APPAREL LIMITED. Associated with Sri Dhanalakshmi Group (Est. 1971).
+          </div>
+          <div className="flex items-center gap-6">
+            <span>Network Partner Scale: 4,000–5,000</span>
+            <span>•</span>
+            <span>India // USA // China</span>
           </div>
         </div>
       </div>

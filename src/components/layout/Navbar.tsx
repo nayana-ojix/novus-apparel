@@ -1,88 +1,91 @@
 "use client";
 
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
-import { Menu, X, ArrowUpRight, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ArrowUpRight, Menu, X, Globe, Layers, ArrowRight } from "lucide-react";
 
-const EDITORIAL_LINKS = [
-  { href: "/", label: "Home", num: "00" },
-  { href: "/about", label: "Archive", num: "01" },
-  { href: "/leadership", label: "Leadership", num: "02" },
-  { href: "/products-innovation", label: "Renaissance™", num: "03" },
-  { href: "/technology-partners", label: "Technology", num: "04" },
-  { href: "/sustainability", label: "Clean Energy", num: "05" },
-  { href: "/global-presence", label: "Corridors", num: "06" },
-  { href: "/contact", label: "Contact", num: "07" },
+const NAV_LINKS = [
+  { label: "The Story", href: "/#story" },
+  { label: "What We Do", href: "/#capabilities" },
+  { label: "Thread to Apparel", href: "/#thread-journey" },
+  { label: "Manufacturing Network", href: "/manufacturing" },
+  { label: "Innovation", href: "/#innovation" },
+  { label: "Leadership", href: "/#leadership" },
+  { label: "Global", href: "/#global" },
 ];
 
 export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isMfgPage = pathname?.startsWith("/manufacturing") || pathname?.startsWith("/factories") || pathname?.startsWith("/technology-partners");
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Lock body scroll when menu is open
   useEffect(() => {
-    setMobileMenuOpen(false);
-  }, [pathname]);
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
-            ? "py-3 bg-atelier-obsidian/90 backdrop-blur-xl border-b border-white/10 shadow-atelier-card"
-            : "py-6 bg-gradient-to-b from-atelier-obsidian/95 via-atelier-obsidian/40 to-transparent"
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+          scrolled
+            ? "py-3 bg-cream/90 backdrop-blur-xl border-b border-sand/60 shadow-sm"
+            : "py-5 sm:py-6 bg-cream/50 backdrop-blur-sm border-b border-sand/30"
         }`}
       >
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-12 flex items-center justify-between">
-          {/* Brand Logo: Bold Architectural Syne */}
-          <Link
-            href="/"
-            className="group flex items-center gap-3 focus:outline-none transition-transform duration-300 hover:scale-[1.02]"
-          >
-            <div className="flex items-center gap-2">
-              <span className="font-syne text-2xl lg:text-3xl font-black tracking-tighter text-white group-hover:text-atelier-champagne transition-colors">
-                NOVUS
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 flex items-center justify-between">
+          {/* Logo / Wordmark */}
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="flex flex-col">
+              <div className="flex items-baseline gap-1.5">
+                <span className="font-display text-xl sm:text-2xl font-bold tracking-tight text-charcoal group-hover:text-olive transition-colors">
+                  NOVUS
+                </span>
+                <span className="text-[10px] sm:text-xs font-display font-medium tracking-ultra uppercase text-burnt">
+                  APPAREL
+                </span>
+              </div>
+              <span className="text-[9px] font-mono uppercase tracking-widest text-charcoal/50">
+                SRI DHANALAKSHMI GROUP • EST. 1971
               </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-atelier-gold animate-pulse" />
             </div>
-            <span className="text-[9px] font-mono tracking-widest text-atelier-gold border-l border-white/20 pl-2 uppercase font-medium">
-              Atelier
-            </span>
           </Link>
 
-          {/* Center: 2026 Floating Magnetic Glass Pill (Desktop) */}
-          <nav className="hidden xl:flex items-center gap-6 px-6 py-2.5 rounded-full glass-pill">
-            {EDITORIAL_LINKS.map((link) => {
-              const isActive = pathname === link.href;
+          {/* Desktop Nav */}
+          <nav className="hidden xl:flex items-center gap-7">
+            {NAV_LINKS.map((link) => {
+              const isCurrent = link.href === pathname || (link.href === "/manufacturing" && isMfgPage);
               return (
                 <Link
-                  key={link.href}
+                  key={link.label}
                   href={link.href}
-                  className={`text-[11px] font-mono tracking-wider transition-all duration-300 relative py-1 flex items-center gap-1.5 ${
-                    isActive
-                      ? "text-atelier-gold font-bold"
-                      : "text-gray-400 hover:text-white"
+                  className={`text-[11px] font-display font-medium uppercase tracking-widest transition-all duration-300 relative py-1 ${
+                    isCurrent
+                      ? "text-burnt font-semibold"
+                      : "text-charcoal/70 hover:text-olive"
                   }`}
                 >
-                  <span className={`text-[9px] ${isActive ? "text-atelier-gold" : "text-gray-600"}`}>
-                    {link.num}
-                  </span>
-                  <span className="uppercase">{link.label}</span>
-                  {isActive && (
+                  {link.label}
+                  {isCurrent && (
                     <motion.span
-                      layoutId="atelier-active-indicator"
-                      className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-to-r from-atelier-gold to-atelier-champagne shadow-gold-glow"
-                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                      layoutId="nav-indicator"
+                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-burnt"
                     />
                   )}
                 </Link>
@@ -90,79 +93,85 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Right Action: Scale Indicator & Atelier CTA */}
-          <div className="hidden lg:flex items-center gap-4">
-            <div className="hidden 2xl:flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-mono text-gray-400">
-              <span className="w-1.5 h-1.5 rounded-full bg-atelier-emerald" />
-              <span>GROUP $160M</span>
-            </div>
+          {/* Action CTAs */}
+          <div className="flex items-center gap-3 sm:gap-4">
             <Link
-              href="/contact"
-              className="group relative inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full text-xs font-syne font-bold uppercase tracking-wider text-black bg-gradient-to-r from-atelier-champagne via-atelier-gold to-atelier-gold hover:from-white hover:to-atelier-champagne transition-all duration-300 shadow-gold-glow"
+              href="/manufacturing"
+              className={`hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[10px] font-display uppercase tracking-wider transition-all duration-300 ${
+                isMfgPage
+                  ? "bg-olive text-cream font-semibold shadow-sm"
+                  : "bg-sand/60 hover:bg-sand text-charcoal hover:text-olive font-medium border border-sand"
+              }`}
             >
-              <span>Consult Atelier</span>
-              <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <Layers className="w-3 h-3 text-burnt" />
+              <span>Network</span>
             </Link>
-          </div>
 
-          {/* Mobile Hamburger Toggle */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="xl:hidden p-2.5 rounded-full border border-white/10 bg-white/5 text-white hover:text-atelier-gold transition-colors focus:outline-none"
-            aria-label="Toggle navigation drawer"
-          >
-            {mobileMenuOpen ? <X className="w-5 h-5 text-atelier-gold" /> : <Menu className="w-5 h-5" />}
-          </button>
+            <Link
+              href="/#contact"
+              className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-[11px] font-display font-semibold uppercase tracking-wider bg-charcoal text-cream hover:bg-olive transition-all duration-300 shadow-sm group"
+            >
+              <span>Enquire</span>
+              <ArrowRight className="w-3 h-3 text-burnt-light transition-transform group-hover:translate-x-0.5" />
+            </Link>
+
+            {/* Mobile Hamburger Button */}
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="xl:hidden p-2 rounded-lg text-charcoal hover:bg-sand/50 transition-colors focus:outline-none focus:ring-2 focus:ring-olive"
+              aria-label="Toggle navigation menu"
+              aria-expanded={menuOpen}
+            >
+              {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </header>
 
-      {/* Full-Screen High-Fashion Mobile Drawer */}
+      {/* Mobile Drawer */}
       <AnimatePresence>
-        {mobileMenuOpen && (
+        {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)" }}
-            animate={{ opacity: 1, clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}
-            exit={{ opacity: 0, clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)" }}
-            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-40 bg-atelier-obsidian/98 backdrop-blur-2xl xl:hidden flex flex-col justify-between pt-28 pb-10 px-8"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-40 bg-cream/98 backdrop-blur-2xl pt-28 px-6 pb-12 flex flex-col justify-between xl:hidden"
           >
-            <div className="flex flex-col space-y-4">
-              <div className="flex items-center justify-between border-b border-white/10 pb-3">
-                <span className="text-[10px] font-mono tracking-widest text-atelier-gold uppercase">
-                  ATELIER INDEX // 2026
-                </span>
-                <span className="text-[10px] font-mono text-gray-500">
-                  EST. 1971 · USD $160M
-                </span>
-              </div>
+            <div className="space-y-6">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-olive font-bold block">
+                NAVIGATION // FROM THREAD TO POSSIBILITY
+              </span>
 
-              {EDITORIAL_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`flex items-baseline justify-between py-2 border-b border-white/5 transition-all duration-300 ${
-                    pathname === link.href ? "text-atelier-gold" : "text-white hover:text-atelier-champagne"
-                  }`}
-                >
-                  <span className="font-syne text-2xl font-bold tracking-tight uppercase">
-                    {link.label}
-                  </span>
-                  <span className="font-mono text-xs text-gray-500">{link.num}</span>
-                </Link>
-              ))}
+              <div className="flex flex-col divide-y divide-sand/60">
+                {NAV_LINKS.map((link) => (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="py-4 font-display text-xl sm:text-2xl font-bold uppercase tracking-tight text-charcoal hover:text-burnt flex items-center justify-between group"
+                  >
+                    <span>{link.label}</span>
+                    <ArrowUpRight className="w-5 h-5 text-sand-dark group-hover:text-burnt transition-colors" />
+                  </Link>
+                ))}
+              </div>
             </div>
 
-            <div className="pt-6 border-t border-white/10 space-y-4">
-              <div className="text-xs font-mono text-gray-400 space-y-1">
-                <p className="text-white font-medium">Sri Dhanalakshmi Group Conglomerate</p>
-                <p className="text-atelier-gold">Bangalore HQ · Shanghai R&D · New Jersey Americas</p>
+            <div className="pt-8 border-t border-sand/80 space-y-4">
+              <div className="text-xs text-charcoal/70 font-body">
+                <span className="font-semibold text-charcoal block">Novus Apparel Limited</span>
+                Associated with Sri Dhanalakshmi Group (Est. 1971)
               </div>
-              <Link
-                href="/contact"
-                className="block w-full py-4 rounded-full text-center bg-gradient-to-r from-atelier-champagne to-atelier-gold text-black font-syne font-bold text-xs uppercase tracking-widest shadow-gold-glow"
-              >
-                Initiate Sourcing Consultation
-              </Link>
+              <div className="flex gap-4">
+                <Link
+                  href="/#contact"
+                  onClick={() => setMenuOpen(false)}
+                  className="w-full text-center py-3 rounded-full bg-olive text-cream font-display text-xs uppercase tracking-wider font-semibold"
+                >
+                  Start Business Enquiry
+                </Link>
+              </div>
             </div>
           </motion.div>
         )}

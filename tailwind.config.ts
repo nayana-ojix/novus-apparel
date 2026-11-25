@@ -9,81 +9,83 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        atelier: {
-          obsidian: "#030712",
-          navy: "#060B18",
-          surface: "#0D1527",
-          border: "#18233C",
-          "border-light": "#2A3A60",
-          gold: "#D4AF37",
-          champagne: "#E5C98D",
-          linen: "#F5F2EB",
-          muted: "#94A3B8",
-          emerald: "#10B981",
-          "emerald-deep": "#022C22",
-          terracotta: "#E06D53",
-          coral: "#EB6B47",
+        // NOVUS APPAREL — NEW CREATIVE DIRECTION
+        cream: {
+          DEFAULT: "#F3EBDD",
+          light: "#F9F5EE",
+          warm: "#EDE5D5",
         },
-        novus: {
-          navy: {
-            deepest: "#030712",
-            dark: "#060B18",
-            DEFAULT: "#0D1836",
-            surface: "#0D1527",
-            border: "#18233C",
-            light: "#253A74",
-          },
-          teal: {
-            deep: "#042F2E",
-            DEFAULT: "#0F766E",
-            vibrant: "#14B8A6",
-            light: "#5EEAD4",
-          },
-          emerald: {
-            deep: "#022C22",
-            DEFAULT: "#059669",
-            light: "#10B981",
-          },
-          ivory: {
-            DEFAULT: "#FAF9F5",
-            warm: "#F5F2EB",
-            muted: "#EAE5D9",
-          },
-          gold: {
-            muted: "#C5A880",
-            DEFAULT: "#D4AF37",
-            champagne: "#E5C98D",
-            light: "#F3DEAA",
-            bronze: "#9A7B56",
-          },
-          coral: {
-            DEFAULT: "#E06D53",
-            vibrant: "#EB6B47",
-            deep: "#B8472E",
-          },
+        olive: {
+          DEFAULT: "#69744B",
+          light: "#8A946E",
+          dark: "#4D5636",
+          50: "#F0F2E8",
+        },
+        burnt: {
+          DEFAULT: "#D76C3F",
+          light: "#E8956F",
+          dark: "#B85530",
+          50: "#FDF0EA",
+        },
+        sand: {
+          DEFAULT: "#E4D6C0",
+          light: "#EDE3D3",
+          dark: "#D4C2A6",
+        },
+        sage: {
+          DEFAULT: "#B9BEA4",
+          light: "#D0D4C2",
+          dark: "#9CA28A",
+        },
+        charcoal: {
+          DEFAULT: "#282B24",
+          light: "#3A3D35",
+          dark: "#1A1C17",
         },
       },
       fontFamily: {
-        syne: ["Syne", "sans-serif"],
-        italiana: ["Italiana", "Cormorant Garamond", "serif"],
-        serif: ["Italiana", "Cormorant Garamond", "Playfair Display", "serif"],
-        sans: ["Plus Jakarta Sans", "Inter", "sans-serif"],
-        mono: ["JetBrains Mono", "SF Mono", "monospace"],
+        display: ['"Space Grotesk"', "sans-serif"],
+        body: ['"DM Sans"', "sans-serif"],
       },
       letterSpacing: {
-        tighter: "-0.05em",
-        tight: "-0.03em",
-        widest: "0.22em",
+        tighter: "-0.04em",
+        tight: "-0.02em",
+        widest: "0.2em",
         ultra: "0.35em",
       },
-      boxShadow: {
-        "gold-glow": "0 0 30px rgba(212, 175, 55, 0.22)",
-        "emerald-glow": "0 0 30px rgba(16, 185, 129, 0.2)",
-        "terracotta-glow": "0 0 30px rgba(224, 109, 83, 0.2)",
-        "atelier-card": "0 20px 40px -15px rgba(2, 6, 18, 0.85)",
+      animation: {
+        "fade-in": "fadeIn 0.6s ease-out forwards",
+        "slide-up": "slideUp 0.8s ease-out forwards",
+        marquee: "marquee 30s linear infinite",
+        "marquee-reverse": "marqueeReverse 35s linear infinite",
+        "float": "float 6s ease-in-out infinite",
+        "pulse-slow": "pulse 4s ease-in-out infinite",
+      },
+      keyframes: {
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        slideUp: {
+          "0%": { opacity: "0", transform: "translateY(40px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        marqueeReverse: {
+          "0%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(0%)" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-20px)" },
+        },
       },
     },
   },
   plugins: [],
 };
+
 export default config;
