@@ -73,7 +73,7 @@ export default function Footer() {
               NOVUS APPAREL LIMITED
             </h2>
             <p className="font-body text-cream/70 text-sm sm:text-base mt-2 max-w-2xl font-light leading-relaxed">
-              &ldquo;From Thread to Possibility.&rdquo; Providing vertical apparel solutions from technical fabric research and engineering to end garments through a disciplined partner manufacturing network.
+              &ldquo;From Thread to Possibility.&rdquo; Vertical apparel solutions from fabric engineering to finished garments through an orchestrated partner manufacturing network.
             </p>
           </div>
 
@@ -96,7 +96,7 @@ export default function Footer() {
               HERITAGE & ECOSYSTEM
             </span>
             <p className="font-body text-xs sm:text-sm text-cream/70 leading-relaxed font-light">
-              NOVUS APPAREL is an apparel solutions business associated with Sri Dhanalakshmi Group (est. 1971). We unite East Asian polymer and greige innovation with South Asian vertical textile craftsmanship and agile partner manufacturing.
+              Associated with Sri Dhanalakshmi Group (est. 1971). Delivering vertical apparel solutions through science, technology, and engineering.
             </p>
             <div className="pt-2">
               <Link

@@ -47,12 +47,38 @@ if (typeof window !== "undefined") {
 // SECTION 03: Verified Documented Fabric Capabilities
 const FABRIC_CAPABILITIES = [
   {
+    id: "shirt-weight",
+    name: "Shirt-Weight Fabrics",
+    category: "110–160 GSM SHIRTING",
+    desc: "Lightweight, breathable woven constructions (110–160 GSM) for executive and casual shirting with high wrinkle recovery and air permeability.",
+    specs: [
+      "110–160 GSM Weight Specification",
+      "Compact Combed Cotton & Blends",
+      "Wrinkle-Resist Formulations",
+      "Executive & Casual Shirting",
+    ],
+    image: "/images/editorial/cap-cotton.jpg",
+  },
+  {
+    id: "bottom-weight",
+    name: "Bottom-Weight Fabrics",
+    category: "200–300 GSM BOTTOMS",
+    desc: "Structured bottom-weights (200–300 GSM): high-density twills, TC/PR blends, and canvas weaves engineered for durability and crease retention.",
+    specs: [
+      "200–300 GSM Weight Specification",
+      "TC (Tetoron-Cotton) & PR Formulations",
+      "Heavy Cotton Twills & Canvas",
+      "Tailored Trousers & Chinos",
+    ],
+    image: "/images/editorial/cap-wovens.jpg",
+  },
+  {
     id: "greige",
     name: "Greige Fabrics",
     category: "FOUNDATIONAL TEXTILES",
-    desc: "Precision-woven and circular-knitted unfinished greige textiles formulated for uniform absorption, controlled residual shrinkage, and flawless subsequent piece-dyeing or printing.",
+    desc: "Woven and circular-knitted greige fabrics for upholstery, shirt weight, and bottom weight with controlled residual shrinkage.",
     specs: [
-      "Custom Yarn Counts",
+      "Upholstery, Shirt & Bottom Weight",
       "Weft & Warp Stability",
       "Controlled Residual Shrinkage",
       "Knitted & Woven Formulations",
@@ -63,7 +89,7 @@ const FABRIC_CAPABILITIES = [
     id: "piece-dyed",
     name: "Piece-Dyed Fabrics",
     category: "CONTINUOUS DYEING",
-    desc: "Even, high-penetration piece-dyed textiles formulated with deep pigment saturation, consistent roll-to-roll batch calibration, and superior light and wash fastness.",
+    desc: "Even, high-penetration piece-dyed textiles formulated with deep pigment saturation and superior light and wash fastness.",
     specs: [
       "Solid Color Uniformity",
       "High Wash Fastness",
@@ -76,7 +102,7 @@ const FABRIC_CAPABILITIES = [
     id: "yarn-dyed",
     name: "Yarn-Dyed Fabrics",
     category: "PATTERNED WEAVES",
-    desc: "Intricately patterned shirting weaves utilizing pre-dyed individual yarns to create crisp plaids, micro-checks, engineered stripes, and dimensional dobby motifs.",
+    desc: "Intricately patterned shirting weaves utilizing pre-dyed individual yarns for plaids, micro-checks, and dimensional dobby motifs.",
     specs: [
       "Compact Combed Yarns",
       "Crisp Pattern Definition",
@@ -86,36 +112,10 @@ const FABRIC_CAPABILITIES = [
     image: "/images/editorial/cap-wovens.jpg",
   },
   {
-    id: "shirt-weight",
-    name: "Shirt-Weight Fabrics",
-    category: "FINE SHIRTING",
-    desc: "Lightweight, breathable woven constructions designed for executive and luxury casual shirting, offering silky tactile hand-feel and all-day wrinkle recovery.",
-    specs: [
-      "High-Count Compact Cotton",
-      "Viscose & Poly Blends",
-      "Wrinkle-Resist Formulations",
-      "Featherweight Air Permeability",
-    ],
-    image: "/images/editorial/cap-cotton.jpg",
-  },
-  {
-    id: "bottom-weight",
-    name: "Bottom-Weight Fabrics",
-    category: "STRUCTURED BOTTOMS",
-    desc: "High-density twills, canvas weaves, and structured dobby foundations engineered for tailored trousers, chinos, and modern durable workwear.",
-    specs: [
-      "Heavy Cotton Twills",
-      "TC (Tetoron-Cotton) Blends",
-      "PR Formulations",
-      "High Abrasion Resistance",
-    ],
-    image: "/images/editorial/cap-wovens.jpg",
-  },
-  {
     id: "cotton-blends",
     name: "Cotton & Cotton Blends",
     category: "NATURAL STAPLE",
-    desc: "Ring-spun long-staple combed cotton engineered pure or blended with cellulosic viscose or synthetic micro-filaments for enhanced dimensional recovery.",
+    desc: "100% combed cotton and cotton-rich blends engineered pure or blended for enhanced durability and breathability.",
     specs: [
       "100% Combed Cotton",
       "Cotton-Poly Hybrids",
@@ -128,7 +128,7 @@ const FABRIC_CAPABILITIES = [
     id: "micro-poly",
     name: "Micro Polyester",
     category: "ENGINEERED FILAMENT",
-    desc: "Fine-denier continuous micro-polyester filaments engineered for dynamic moisture dispersion, fast drying, and featherweight aerodynamic drape.",
+    desc: "Continuous micro-polyester filaments engineered for dynamic moisture dispersion, fast drying, and featherweight drape.",
     specs: [
       "Micro-Denier Cross-Section",
       "Hydrophilic Wicking Action",
@@ -141,7 +141,7 @@ const FABRIC_CAPABILITIES = [
     id: "viscose-blends",
     name: "Viscose Blends",
     category: "BOTANICAL CELLULOSIC",
-    desc: "Regenerated botanical cellulosics providing fluid drape, cool skin hand-feel, and luxurious surface sheen for contemporary lifestyle collections.",
+    desc: "Regenerated botanical cellulosics providing fluid drape, cool skin hand-feel, and silken luster for lifestyle collections.",
     specs: [
       "Fluid Dynamic Drape",
       "Silken Luster",
@@ -156,37 +156,37 @@ const FABRIC_CAPABILITIES = [
 const APPAREL_CATEGORIES = [
   {
     title: "Shirts",
-    role: "EXECUTIVE & LIFESTYLE SHIRTING",
-    desc: "Precision-tailored shirts manufactured with impeccable collar architecture, durable plackets, clean single-needle seams, and premium button attachments across formal and contemporary styles.",
+    role: "EXECUTIVE & LIFESTYLE",
+    desc: "Tailored shirts engineered with clean single-needle seams, durable plackets, and precise collar architecture across 110–160 GSM fabrics.",
     specs: [
-      "Tailored Executive Dress Shirts",
+      "Executive Dress Shirts",
       "Casual Washed Button-Downs",
-      "Lightweight Utility Overshirts",
-      "Knitted Jersey Polo Shirting",
+      "Utility Overshirts",
+      "Knitted Polo Shirting",
     ],
     image: "/images/editorial/cap-wovens.jpg",
   },
   {
     title: "Bottoms",
-    role: "STRUCTURED PANTS & TROUSERS",
-    desc: "Engineered trousers, chinos, and casual bottom-weights crafted with reinforced pocketing, ergonomic waistband ergonomics, and long-lasting crease retention.",
+    role: "STRUCTURED BOTTOMS",
+    desc: "Trousers and chinos crafted with reinforced pocketing, ergonomic waistbands, and crease retention across 200–300 GSM twills.",
     specs: [
       "Tailored Formal Trousers",
       "Everyday Chinos & Khakis",
-      "Ergonomic Cargo & Utility Pants",
+      "Utility Pants",
       "Structured Casual Bottoms",
     ],
     image: "/images/editorial/cap-cotton.jpg",
   },
   {
     title: "Activewear",
-    role: "PERFORMANCE & MOTION APPAREL",
-    desc: "Technical sportswear and athletic apparel engineered for unrestricted movement, featuring 4-way elastic stretch, flatlock anti-chafing seams, and capillary perspiration evaporation.",
+    role: "PERFORMANCE APPAREL",
+    desc: "Technical sportswear engineered for movement, featuring 4-way elastic stretch, flatlock seams, and fast moisture dispersion.",
     specs: [
-      "Athletic Performance Tops",
+      "Performance Tops",
       "Training Bottoms & Shorts",
-      "Ergonomic Layering Pieces",
-      "Hydrophilic Micro-Mesh Wear",
+      "Ergonomic Layering",
+      "Micro-Mesh Activewear",
     ],
     image: "/images/editorial/cap-performance.jpg",
   },
@@ -255,7 +255,7 @@ export default function ManufacturingNetworkPage() {
                 </h1>
 
                 <p className="font-body text-base sm:text-xl text-charcoal/80 font-light leading-relaxed max-w-3xl">
-                  NOVUS APPAREL delivers high-volume apparel solutions through a vetted international network of partner manufacturing facilities. We coordinate material sourcing, technical tech packs, and synchronized delivery across international corridors.
+                  High-volume apparel solutions delivered through a vetted international network of partner manufacturing facilities.
                 </p>
 
                 {/* Important Business Model Distinction Callout */}
@@ -263,7 +263,7 @@ export default function ManufacturingNetworkPage() {
                   <strong className="font-semibold text-charcoal block mb-1">
                     The Partner Network Model:
                   </strong>
-                  NOVUS works in close technical collaboration with vetted independent partner factories. Rather than claiming direct ownership of manufacturing facilities, NOVUS acts as the solutions architect—overseeing design, yarn physics, tech-pack compliance, and international client delivery.
+                  NOVUS acts as the solutions architect—overseeing product design, yarn physics, tech-pack compliance, and international delivery across vetted partner facilities.
                 </div>
               </div>
 
@@ -337,7 +337,7 @@ export default function ManufacturingNetworkPage() {
                 </h2>
 
                 <p className="font-body text-sm sm:text-base text-charcoal/80 font-light leading-relaxed">
-                  The confirmed figure of 4,000–5,000 accurately presents the collaborative scale of the partner manufacturing network. This ecosystem allows NOVUS to match each client&apos;s exact order—whether intricate yarn-dyed shirting or high-velocity athletic activewear—with partner facilities tailored for that specific product category.
+                  The confirmed figure of 4,000–5,000 represents the collaborative scale of the partner manufacturing network across shirts, bottom-weights, and activewear.
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">

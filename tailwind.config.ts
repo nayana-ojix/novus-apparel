@@ -44,8 +44,9 @@ const config: Config = {
         },
       },
       fontFamily: {
-        display: ['"Space Grotesk"', "sans-serif"],
-        body: ['"DM Sans"', "sans-serif"],
+        display: ['"Clash Display"', "sans-serif"],
+        body: ['"Satoshi"', "sans-serif"],
+        sans: ['"Satoshi"', "sans-serif"],
       },
       letterSpacing: {
         tighter: "-0.04em",

@@ -28,31 +28,31 @@ if (typeof window !== "undefined") {
 const RENAISSANCE_PILLARS = [
   {
     icon: Droplets,
-    title: "Hydrophilic Capillary Dispersion",
+    title: "Hydrophilic Moisture Dispersion",
     concept: "Moisture Dispersion",
-    metric: "Fast-Dry Evaporation",
-    desc: "Engineered micro-polyester filaments designed to rapidly pull perspiration outward from the skin across a widened surface area, accelerating natural evaporation.",
+    metric: "Fast-Dry Kinetics",
+    desc: "Micro-polyester filaments engineered to disperse perspiration rapidly across widened surface area for accelerated evaporation.",
   },
   {
     icon: Zap,
     title: "Dual-Core Elasticity & Recovery",
     concept: "Shape Retention",
     metric: "Multi-Axis Stretch",
-    desc: "Composite filament architectures that provide multi-directional mechanical stretch while resisting permanent garment bagging and seam deformation.",
+    desc: "Composite filament architectures providing multi-directional stretch while resisting garment bagging and seam deformation.",
   },
   {
     icon: RefreshCw,
     title: "Comfort to Complement Technology",
     concept: "Tactile Ergonomics",
     metric: "Skin-Layer Comfort",
-    desc: "Balancing high-performance synthetic properties with natural fiber softness, ensuring activewear and lifestyle garments maintain an ultra-smooth boundary layer against the body.",
+    desc: "Balancing performance synthetics with natural fiber softness for an ultra-smooth boundary layer against the skin.",
   },
   {
     icon: Cpu,
-    title: "Dimensional Integrity",
+    title: "Dimensional Seam Integrity",
     concept: "Seam-Torque Mitigation",
-    metric: "Rotational Twist Reduction",
-    desc: "Calibrated spinning twist and heat-set relaxation to minimize rotational skewing, keeping tailored collars, plackets, and trouser hems crisp after repetitive wear.",
+    metric: "Rotational Stability",
+    desc: "Calibrated twist and heat-set relaxation to minimize rotational skewing in collars, plackets, and trouser hems.",
   },
 ];
 
@@ -90,7 +90,7 @@ export default function InnovationTechnologySection() {
               </span>
             </h2>
             <p className="font-body text-base sm:text-lg text-charcoal/70 font-light leading-relaxed max-w-3xl">
-              NOVUS combines science, technology, and engineering to elevate everyday apparel. Rather than treating fashion as purely aesthetic, our product development approaches fabric construction, yarn physics, and garment assembly through systematic technical inquiry.
+              Applying science, technology, and engineering to elevate everyday apparel through systematic polymer research, yarn physics, and garment assembly.
             </p>
           </div>
 

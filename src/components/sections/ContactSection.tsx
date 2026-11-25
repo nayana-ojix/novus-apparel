@@ -57,7 +57,7 @@ export default function ContactSection() {
               </span>
             </h2>
             <p className="font-body text-base sm:text-lg text-charcoal/70 font-light leading-relaxed max-w-3xl">
-              Connect directly with our leadership and technical merchandising teams. Whether you require custom material formulations, pattern engineering, or large-scale partner manufacturing, we are ready to collaborate.
+              Connect directly with our leadership and merchandising teams for fabric development, pattern engineering, or partner manufacturing.
             </p>
           </div>
 

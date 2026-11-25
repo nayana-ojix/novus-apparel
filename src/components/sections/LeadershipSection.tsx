@@ -30,16 +30,16 @@ const FOUNDERS = [
     image: "/img/Chaand.jpg",
     email: "chaand@novusapparels.com",
     quote:
-      "Global manufacturing is not about moving goods—it is about orchestrating precision, trust, and technological agility across borders.",
+      "Global manufacturing is about orchestrating precision, trust, and technological agility across borders.",
     bio: [
-      "Chandrasekhar brings more than two decades of senior executive experience spanning vertical apparel manufacturing, international exports, global sales strategy, marketing communications, and corporate profit-center governance.",
-      "Under his leadership, Novus Apparel expanded its operational footprint across continents, pioneering high-efficiency manufacturing pipelines and strategic cross-border partnerships connecting South Asia, East Asia, and the Americas.",
+      "B.Tech in Textile Technology with over two decades of executive experience across vertical apparel manufacturing, international exports, global sales strategy, and corporate profit-center governance.",
+      "Pioneered cross-border manufacturing pipelines and strategic partnerships connecting South Asia, East Asia, and the Americas.",
     ],
     expertise: [
       "Global Supply Chain Orchestration",
       "Textile Manufacturing Operations",
       "International Trade & Export Logistics",
-      "Strategic Profit-Center Governance",
+      "Strategic Governance",
     ],
   },
   {
@@ -51,13 +51,13 @@ const FOUNDERS = [
     quote:
       "True innovation begins at the polymer and spindle. When you master fiber physics, everyday comfort becomes effortless.",
     bio: [
-      "Mohmad Noorulla is a distinguished textile engineering authority with deep mastery across yarn development, fabric merchandising, and technical product R&D. He previously served as Vice President of Technical & Product Development.",
-      "Recognizing the critical importance of localized raw material sourcing and polymer-fiber innovations in East Asia, he established Newwell Textiles in Pudong, Shanghai, catalyzing Novus's specialized fabric sourcing, greige development, and technical material leadership.",
+      "M.Tech in Textile Technology and authority in yarn development, fabric merchandising, and technical product R&D. Former Vice President of Technical & Product Development.",
+      "Established Newwell Textiles in Pudong, Shanghai, leading specialized fabric sourcing, greige development, and East Asian material innovation.",
     ],
     expertise: [
-      "Textile Engineering & Polymer Science",
-      "Advanced Greige & Fabric Development",
-      "China & East Asia Sourcing Architecture",
+      "Polymer Science & Fiber Physics",
+      "Greige & Fabric Development",
+      "East Asia Sourcing Architecture",
       "Performance Finish Formulations",
     ],
   },
@@ -88,7 +88,7 @@ export default function LeadershipSection() {
               </KineticText>
             </h2>
             <p className="font-body text-base sm:text-lg text-charcoal/70 font-light leading-relaxed">
-              NOVUS APPAREL is steered by qualified textile engineering authorities combining decades of senior manufacturing leadership, polymer research, and global commercial strategy.
+              Qualified textile engineering authorities combining decades of executive manufacturing leadership and polymer research.
             </p>
           </div>
 

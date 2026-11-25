@@ -56,7 +56,7 @@ export default function ManufacturingNetworkPreviewSection() {
               </span>
             </h2>
             <p className="font-body text-base sm:text-lg text-charcoal/70 font-light leading-relaxed max-w-3xl">
-              NOVUS operates through an agile, vetted network of partner manufacturing facilities. We distinguish our core organisation—focusing on product development, material engineering, and global client relations—from our partner manufacturing ecosystem, ensuring agile execution and uncompromised commercial reliability.
+              An agile, vetted partner manufacturing ecosystem representing 4,000–5,000 workforce scale—orchestrated by NOVUS product development, material engineering, and global client relations.
             </p>
           </div>
 

@@ -13,9 +13,7 @@ import {
   Pause,
   Volume2,
   VolumeX,
-  Sparkles,
   Layers,
-  ArrowRight,
 } from "lucide-react";
 import CurvedTextBadge from "@/components/motion/CurvedTextBadge";
 import MagneticButton from "@/components/motion/MagneticButton";
@@ -30,16 +28,14 @@ export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
-  const [videoLoaded, setVideoLoaded] = useState(false);
 
-  // Parallax on scroll
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
   });
 
-  const videoScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
-  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "28%"]);
+  const videoScale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "24%"]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
 
   const togglePlay = () => {
@@ -78,7 +74,6 @@ export default function HeroSection() {
           muted
           loop
           playsInline
-          onLoadedData={() => setVideoLoaded(true)}
           poster="/images/editorial/hero-fashion.jpg"
           className="w-full h-full object-cover object-center filter contrast-[1.06] brightness-95"
         >
@@ -89,17 +84,14 @@ export default function HeroSection() {
           />
         </video>
 
-        {/* Brand-Accurate Cinematic Gradient Overlays (Cream & Sand Dominant, Charcoal Contrast) */}
-        {/* Soft Warm Sand Vignette */}
+        {/* Warm Sand & Cream Duotone Gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-cream via-cream/60 to-cream/40 z-[1]" />
-        {/* Editorial Side Tint for Typographic Legibility */}
         <div className="absolute inset-0 bg-gradient-to-r from-cream/90 via-cream/70 to-cream/30 z-[1]" />
-        {/* Subtle Warm Amber/Sand Grading */}
         <div className="absolute inset-0 bg-sand/20 mix-blend-multiply z-[1] pointer-events-none" />
       </motion.div>
 
       {/* ========================================================
-          HERO CONTENT LAYER (Kinetic Typography & Storytelling)
+          HERO CONTENT LAYER (Clash Display & Satoshi)
           ======================================================== */}
       <motion.div
         style={{ y: contentY, opacity: contentOpacity }}
@@ -107,20 +99,18 @@ export default function HeroSection() {
       >
         {/* Top Eyebrow / Rotating Heritage Stamp */}
         <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
-          {/* Group Heritage Badge */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-cream/90 backdrop-blur-md border border-sand/80 text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-charcoal shadow-sm"
+            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-cream/90 backdrop-blur-md border border-sand/80 text-[10px] sm:text-xs font-mono uppercase tracking-widest text-charcoal shadow-sm"
           >
             <span className="w-2 h-2 rounded-full bg-burnt animate-pulse" />
-            <span className="font-semibold text-charcoal">SRI DHANALAKSHMI GROUP</span>
-            <span className="text-charcoal/40">•</span>
+            <span className="font-bold text-charcoal">SRI DHANALAKSHMI GROUP</span>
+            <span className="text-charcoal/40">&bull;</span>
             <span className="text-charcoal/80 font-medium">EST. 1971</span>
           </motion.div>
 
-          {/* Rotating Curved Awwwards Stamp Badge */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -135,23 +125,21 @@ export default function HeroSection() {
           </motion.div>
         </div>
 
-        {/* Central Monumental Kinetic Headline */}
+        {/* Central Monumental Kinetic Headline in Clash Display */}
         <div className="my-auto py-6 max-w-5xl space-y-4 sm:space-y-6">
-          <div className="space-y-1 sm:space-y-2">
-            <span className="text-[11px] font-mono uppercase tracking-ultra text-burnt font-bold block mb-2">
+          <div className="space-y-2">
+            <span className="text-xs font-mono uppercase tracking-widest text-burnt font-bold block mb-1">
               <KineticText type="chars" delay={0.2} stagger={0.03}>
-                CREATIVE DIRECTION // FROM THREAD TO POSSIBILITY
+                FROM THREAD TO POSSIBILITY
               </KineticText>
             </span>
 
-            {/* Headline Line 1 */}
             <h1 className="font-display font-bold uppercase tracking-tight text-charcoal leading-[0.92] text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.2rem]">
               <span className="block overflow-hidden">
                 <KineticText type="words" delay={0.3} duration={0.9} stagger={0.06}>
                   WE DON&apos;T JUST MAKE CLOTHES.
                 </KineticText>
               </span>
-              {/* Headline Line 2 */}
               <span className="block overflow-hidden mt-1 sm:mt-2 text-burnt">
                 <KineticText type="words" delay={0.55} duration={0.9} stagger={0.06}>
                   WE MAKE
@@ -165,17 +153,17 @@ export default function HeroSection() {
             </h1>
           </div>
 
-          {/* Supporting Editorial Message */}
+          {/* Supporting Message */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.75, ease: [0.16, 1, 0.3, 1] }}
-            className="font-body text-base sm:text-lg lg:text-xl text-charcoal/85 max-w-2xl font-light leading-relaxed pt-1"
+            className="font-body text-base sm:text-lg lg:text-xl text-charcoal/85 max-w-2xl font-normal leading-relaxed pt-1"
           >
             Apparel expertise, material innovation and manufacturing partnerships brought together.
           </motion.p>
 
-          {/* Clear Primary Actions with Magnetic Spring Physics */}
+          {/* Concise CTAs in Satoshi */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -185,7 +173,7 @@ export default function HeroSection() {
             <MagneticButton dataCursor="EXPLORE">
               <a
                 href="#story"
-                className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-charcoal text-cream hover:bg-olive transition-all duration-300 font-display text-xs uppercase tracking-wider font-semibold shadow-md group"
+                className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-charcoal text-cream hover:bg-olive transition-all duration-300 font-body text-xs uppercase tracking-wider font-bold shadow-md group"
               >
                 <span>Explore NOVUS</span>
                 <ArrowDown className="w-3.5 h-3.5 text-burnt-light transition-transform group-hover:translate-y-1" />
@@ -195,31 +183,30 @@ export default function HeroSection() {
             <MagneticButton dataCursor="VIEW">
               <a
                 href="#capabilities"
-                className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-cream/90 backdrop-blur-md hover:bg-cream text-charcoal border border-sand-dark transition-all duration-300 font-display text-xs uppercase tracking-wider font-semibold shadow-sm group"
+                className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-cream/90 backdrop-blur-md hover:bg-cream text-charcoal border border-sand-dark transition-all duration-300 font-body text-xs uppercase tracking-wider font-bold shadow-sm group"
               >
-                <span>Explore Capabilities</span>
+                <span>Capabilities</span>
                 <ArrowUpRight className="w-4 h-4 text-burnt transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
             </MagneticButton>
 
             <Link
               href="/manufacturing"
-              className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-olive hover:text-burnt transition-colors ml-2 font-bold"
+              className="inline-flex items-center gap-2 text-xs font-body font-bold uppercase tracking-wider text-olive hover:text-burnt transition-colors ml-2"
             >
               <Layers className="w-3.5 h-3.5 text-burnt" />
               <span>Partner Network</span>
-              <span className="text-charcoal/40">→</span>
+              <span className="text-charcoal/40">&rarr;</span>
             </Link>
           </motion.div>
         </div>
 
-        {/* Bottom Bar: Video HUD Controls & Scroll Indicator */}
+        {/* Bottom Bar: Video HUD & Categories */}
         <div className="flex flex-wrap items-center justify-between gap-6 pt-4 border-t border-sand/60 text-charcoal/70">
-          {/* Video Control HUD */}
           <div className="flex items-center gap-3">
             <button
               onClick={togglePlay}
-              className="p-2 rounded-full bg-cream/80 hover:bg-cream border border-sand text-charcoal transition-colors flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider"
+              className="p-2 rounded-full bg-cream/80 hover:bg-cream border border-sand text-charcoal transition-colors flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider font-semibold"
               aria-label={isPlaying ? "Pause cinematic footage" : "Play cinematic footage"}
             >
               {isPlaying ? <Pause className="w-3.5 h-3.5 text-burnt" /> : <Play className="w-3.5 h-3.5 text-olive" />}
@@ -235,12 +222,11 @@ export default function HeroSection() {
             </button>
 
             <span className="text-[10px] font-mono uppercase tracking-wider text-charcoal/50 hidden md:inline">
-              LIVE CINEMATIC FOOTAGE // TEXTILE MOTION
+              TEXTILE MOTION &bull; AUTHENTIC WEAVE
             </span>
           </div>
 
-          {/* Three Core Pillars */}
-          <div className="hidden lg:flex items-center gap-6 text-[10px] font-mono uppercase tracking-wider text-charcoal/60">
+          <div className="hidden lg:flex items-center gap-6 text-[11px] font-body font-bold uppercase tracking-wider text-charcoal/70">
             <span className="flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-olive" />
               <span>SHIRTS</span>
@@ -255,13 +241,12 @@ export default function HeroSection() {
             </span>
           </div>
 
-          {/* Scroll Prompt */}
           <MagneticButton>
             <a
               href="#story"
-              className="inline-flex items-center gap-2 text-[11px] font-mono uppercase tracking-widest text-charcoal hover:text-burnt transition-colors group font-semibold"
+              className="inline-flex items-center gap-2 text-xs font-body font-bold uppercase tracking-wider text-charcoal hover:text-burnt transition-colors group"
             >
-              <span>SCROLL TO DISCOVER</span>
+              <span>DISCOVER</span>
               <ArrowDown className="w-3.5 h-3.5 text-burnt transition-transform group-hover:translate-y-1" />
             </a>
           </MagneticButton>
