@@ -1,16 +1,22 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowRight, Sparkles, Layers, Sliders, ChevronRight, Activity, ArrowUpRight } from "lucide-react";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import {
+  ArrowRight,
+  Sparkles,
+  Layers,
+  Sliders,
+  ChevronRight,
+  Activity,
+  ArrowUpRight,
+} from "lucide-react";
+import KineticThreadCanvas from "@/components/motion/KineticThreadCanvas";
+import MagneticButton from "@/components/motion/MagneticButton";
+import KineticText from "@/components/motion/KineticText";
+import TiltCard from "@/components/motion/TiltCard";
 
 const THREAD_STAGES = [
   {
@@ -48,7 +54,7 @@ const THREAD_STAGES = [
   {
     step: "03",
     id: "innovation",
-    label: "INNOVATION",
+    label: "MATERIAL INNOVATION",
     title: "Renaissance™ & Comfort Engineering",
     tagline: "Science and technology complementing human comfort",
     desc: "Our signature innovation approach integrates science with textile physics. Through the Renaissance concept, we engineer micro-polyester blends and dual-core elastomeric filaments that disperse moisture rapidly while maintaining over 95% elastic recovery.",
@@ -106,7 +112,12 @@ export default function ThreadToApparelSection() {
       id="thread-journey"
       className="py-24 lg:py-36 bg-sand/30 border-b border-sand/70 relative overflow-hidden"
     >
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
+      {/* Living Interactive Kinetic Thread Canvas Background */}
+      <div className="absolute inset-0 pointer-events-none opacity-40 z-0">
+        <KineticThreadCanvas />
+      </div>
+
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sand/70 border border-sand text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-burnt font-bold">
@@ -115,21 +126,28 @@ export default function ThreadToApparelSection() {
           </div>
 
           <h2 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold uppercase tracking-tight text-charcoal leading-[0.98]">
-            THE NOVUS THREAD: <br />
-            <span className="text-olive">FROM THREAD TO POSSIBILITY.</span>
+            <KineticText type="words" delay={0.1} stagger={0.06}>
+              THE NOVUS THREAD:
+            </KineticText>{" "}
+            <br />
+            <span className="text-olive">
+              <KineticText type="words" delay={0.3} stagger={0.06}>
+                FROM THREAD TO POSSIBILITY.
+              </KineticText>
+            </span>
           </h2>
 
           <p className="font-body text-base sm:text-lg text-charcoal/70 font-light leading-relaxed">
-            Follow the recurring journey of textile transformation—from the microscopic physics of raw fiber to finished apparel delivered through an orchestrated partner manufacturing network.
+            Follow the continuous recurring journey of textile transformation—from the microscopic physics of raw fiber to finished apparel delivered through an orchestrated partner manufacturing network.
           </p>
         </div>
 
         {/* 5-Stage Transformation Progress Rail */}
         <div className="relative mb-14">
-          {/* Background Connecting Line */}
+          {/* Background Connecting Rail Line */}
           <div className="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-sand-dark -translate-y-1/2 z-0" />
 
-          {/* Stepper Buttons */}
+          {/* Stepper Buttons with Active State Animation */}
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4 relative z-10">
             {THREAD_STAGES.map((s, idx) => {
               const isActive = activeStage === idx;
@@ -137,25 +155,29 @@ export default function ThreadToApparelSection() {
                 <button
                   key={s.id}
                   onClick={() => setActiveStage(idx)}
-                  className={`p-3 sm:p-4 rounded-2xl text-left transition-all duration-300 border flex flex-col justify-between ${
+                  className={`p-3.5 sm:p-4 rounded-2xl text-left transition-all duration-300 border flex flex-col justify-between ${
                     isActive
                       ? "bg-cream border-charcoal shadow-md scale-[1.02]"
                       : "bg-cream/70 hover:bg-cream border-sand/80 text-charcoal/60"
                   }`}
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded ${
-                      isActive ? s.pillColor : "bg-sand text-charcoal/50"
-                    }`}>
+                    <span
+                      className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded ${
+                        isActive ? s.pillColor : "bg-sand text-charcoal/50"
+                      }`}
+                    >
                       {s.step}
                     </span>
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-charcoal/40">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-charcoal/40 font-semibold">
                       PHASE
                     </span>
                   </div>
-                  <span className={`font-display text-xs sm:text-sm font-bold uppercase tracking-tight transition-colors ${
-                    isActive ? "text-charcoal" : "text-charcoal/70"
-                  }`}>
+                  <span
+                    className={`font-display text-xs sm:text-sm font-bold uppercase tracking-tight transition-colors ${
+                      isActive ? "text-charcoal" : "text-charcoal/70"
+                    }`}
+                  >
                     {s.label}
                   </span>
                 </button>
@@ -180,7 +202,9 @@ export default function ThreadToApparelSection() {
                 >
                   <div className="space-y-2">
                     <div className="flex items-center gap-3">
-                      <span className={`text-xs font-mono font-bold uppercase tracking-widest px-3 py-1 rounded-full ${stage.pillColor}`}>
+                      <span
+                        className={`text-xs font-mono font-bold uppercase tracking-widest px-3 py-1 rounded-full ${stage.pillColor}`}
+                      >
                         PHASE {stage.step} OF 05
                       </span>
                       <span className="text-xs font-mono uppercase tracking-widest text-charcoal/50">
@@ -200,7 +224,10 @@ export default function ThreadToApparelSection() {
                   {/* Micro Specs Grid */}
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
                     {stage.stats.map((stat, i) => (
-                      <div key={i} className="p-3.5 rounded-xl bg-sand/40 border border-sand">
+                      <div
+                        key={i}
+                        className="p-3.5 rounded-xl bg-sand/40 border border-sand"
+                      >
                         <span className="text-[10px] font-mono uppercase tracking-wider text-charcoal/50 block mb-1">
                           {stat.label}
                         </span>
@@ -211,20 +238,33 @@ export default function ThreadToApparelSection() {
                     ))}
                   </div>
 
-                  {/* Navigation Stepper Controls */}
-                  <div className="flex items-center gap-4 pt-4 border-t border-sand">
-                    <button
-                      onClick={() => setActiveStage((prev) => (prev > 0 ? prev - 1 : THREAD_STAGES.length - 1))}
-                      className="px-4 py-2 rounded-full border border-sand hover:bg-sand text-xs font-mono uppercase tracking-wider text-charcoal"
-                    >
-                      ← Previous Phase
-                    </button>
-                    <button
-                      onClick={() => setActiveStage((prev) => (prev < THREAD_STAGES.length - 1 ? prev + 1 : 0))}
-                      className="px-5 py-2 rounded-full bg-charcoal text-cream hover:bg-olive text-xs font-mono uppercase tracking-wider font-semibold transition-colors"
-                    >
-                      Next Phase →
-                    </button>
+                  {/* Navigation Stepper Controls with Magnetic Physics */}
+                  <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-sand">
+                    <MagneticButton>
+                      <button
+                        onClick={() =>
+                          setActiveStage((prev) =>
+                            prev > 0 ? prev - 1 : THREAD_STAGES.length - 1
+                          )
+                        }
+                        className="px-5 py-2.5 rounded-full border border-sand hover:bg-sand text-xs font-mono uppercase tracking-wider text-charcoal transition-colors font-medium"
+                      >
+                        ← Previous Phase
+                      </button>
+                    </MagneticButton>
+
+                    <MagneticButton>
+                      <button
+                        onClick={() =>
+                          setActiveStage((prev) =>
+                            prev < THREAD_STAGES.length - 1 ? prev + 1 : 0
+                          )
+                        }
+                        className="px-6 py-2.5 rounded-full bg-charcoal text-cream hover:bg-olive text-xs font-mono uppercase tracking-wider font-semibold transition-colors shadow-sm"
+                      >
+                        Next Phase →
+                      </button>
+                    </MagneticButton>
 
                     {stage.id === "network" && (
                       <Link
@@ -242,33 +282,35 @@ export default function ThreadToApparelSection() {
 
             {/* Right Stage Authentic Imagery (5 cols) */}
             <div className="lg:col-span-5">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={stage.id}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.4 }}
-                  className="relative h-72 sm:h-96 lg:h-[420px] w-full rounded-2xl overflow-hidden bg-sand border border-sand/80 shadow-sm"
-                >
-                  <Image
-                    src={stage.image}
-                    alt={stage.title}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 500px"
-                    className="object-cover object-center filter contrast-[1.02]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-cream">
-                    <span className="text-[10px] font-mono uppercase tracking-widest bg-charcoal/70 backdrop-blur-md px-3 py-1 rounded-full border border-cream/20">
-                      {stage.label} &bull; 2026
-                    </span>
-                    <span className="text-xs font-mono text-burnt-light font-bold">
-                      {stage.step} / 05
-                    </span>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
+              <TiltCard tiltDegree={6} dataCursor="INSPECT">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={stage.id}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.4 }}
+                    className="relative h-72 sm:h-96 lg:h-[420px] w-full rounded-2xl overflow-hidden bg-sand border border-sand/80 shadow-sm"
+                  >
+                    <Image
+                      src={stage.image}
+                      alt={stage.title}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 500px"
+                      className="object-cover object-center filter contrast-[1.03] transition-transform duration-700 hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-cream">
+                      <span className="text-[10px] font-mono uppercase tracking-widest bg-charcoal/70 backdrop-blur-md px-3 py-1 rounded-full border border-cream/20">
+                        {stage.label} &bull; 2026
+                      </span>
+                      <span className="text-xs font-mono text-burnt-light font-bold">
+                        {stage.step} / 05
+                      </span>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </TiltCard>
             </div>
           </div>
         </div>

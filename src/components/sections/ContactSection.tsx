@@ -2,7 +2,19 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Mail, Phone, MapPin, Send, CheckCircle2, ArrowRight, ArrowUpRight } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  CheckCircle2,
+  ArrowRight,
+  ArrowUpRight,
+  Sparkles,
+} from "lucide-react";
+import TiltCard from "@/components/motion/TiltCard";
+import MagneticButton from "@/components/motion/MagneticButton";
+import KineticText from "@/components/motion/KineticText";
 
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
@@ -20,14 +32,11 @@ export default function ContactSection() {
   };
 
   return (
-    <section
-      id="contact"
-      className="py-24 lg:py-36 bg-cream relative overflow-hidden"
-    >
+    <section id="contact" className="py-24 lg:py-36 bg-cream relative overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
         {/* Section Pill */}
         <div className="flex items-center gap-3 mb-6">
-          <span className="w-2 h-2 rounded-full bg-burnt" />
+          <span className="w-2.5 h-2.5 rounded-full bg-burnt animate-pulse" />
           <span className="text-[11px] font-mono uppercase tracking-ultra text-burnt font-bold">
             SECTION 09 // BUSINESS ENQUIRY
           </span>
@@ -37,8 +46,15 @@ export default function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start mb-16">
           <div className="lg:col-span-8 space-y-4">
             <h2 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold uppercase tracking-tight text-charcoal leading-[0.98]">
-              START THE CONVERSATION. <br />
-              <span className="text-olive">BRING POSSIBILITIES TO LIFE.</span>
+              <KineticText type="words" delay={0.1} stagger={0.06}>
+                START THE CONVERSATION.
+              </KineticText>{" "}
+              <br />
+              <span className="text-olive">
+                <KineticText type="words" delay={0.35} stagger={0.06}>
+                  BRING POSSIBILITIES TO LIFE.
+                </KineticText>
+              </span>
             </h2>
             <p className="font-body text-base sm:text-lg text-charcoal/70 font-light leading-relaxed max-w-3xl">
               Connect directly with our leadership and technical merchandising teams. Whether you require custom material formulations, pattern engineering, or large-scale partner manufacturing, we are ready to collaborate.
@@ -46,17 +62,19 @@ export default function ContactSection() {
           </div>
 
           <div className="lg:col-span-4 flex flex-col justify-end">
-            <div className="p-6 rounded-2xl bg-sand/40 border border-sand space-y-2">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-charcoal/50 block">
-                VERIFIED HEADQUARTERS
-              </span>
-              <p className="font-display text-sm font-bold text-charcoal">
-                Bangalore, Karnataka, India
-              </p>
-              <p className="font-mono text-xs text-olive">
-                +91 99808 12727 &bull; chaand@novusapparels.com
-              </p>
-            </div>
+            <TiltCard tiltDegree={6}>
+              <div className="p-6 sm:p-8 rounded-3xl bg-sand/40 border border-sand shadow-sm space-y-2">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-charcoal/50 font-bold block">
+                  VERIFIED HEADQUARTERS
+                </span>
+                <p className="font-display text-sm font-bold text-charcoal">
+                  Bangalore, Karnataka, India
+                </p>
+                <p className="font-mono text-xs text-olive font-semibold">
+                  +91 99808 12727 &bull; chaand@novusapparels.com
+                </p>
+              </div>
+            </TiltCard>
           </div>
         </div>
 
@@ -82,7 +100,7 @@ export default function ContactSection() {
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
-                  className="px-6 py-2.5 rounded-full bg-charcoal text-cream font-mono text-xs uppercase tracking-wider"
+                  className="px-6 py-2.5 rounded-full bg-charcoal text-cream font-mono text-xs uppercase tracking-wider font-semibold"
                 >
                   Send Another Message
                 </button>
@@ -164,13 +182,15 @@ export default function ContactSection() {
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  className="w-full py-4 rounded-full bg-charcoal hover:bg-olive text-cream font-display text-xs uppercase tracking-wider font-semibold transition-all duration-300 shadow-sm flex items-center justify-center gap-2 group"
-                >
-                  <span>Submit Business Enquiry</span>
-                  <Send className="w-3.5 h-3.5 text-burnt-light transition-transform group-hover:translate-x-1" />
-                </button>
+                <MagneticButton dataCursor="SUBMIT" className="w-full">
+                  <button
+                    type="submit"
+                    className="w-full py-4 rounded-full bg-charcoal hover:bg-olive text-cream font-display text-xs uppercase tracking-wider font-semibold transition-all duration-300 shadow-md flex items-center justify-center gap-2 group"
+                  >
+                    <span>Submit Business Enquiry</span>
+                    <Send className="w-3.5 h-3.5 text-burnt-light transition-transform group-hover:translate-x-1" />
+                  </button>
+                </MagneticButton>
               </form>
             )}
           </div>
@@ -182,70 +202,91 @@ export default function ContactSection() {
             </span>
 
             {/* India Node */}
-            <div className="p-6 rounded-2xl bg-sand/30 border border-sand/80 space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-mono font-bold text-burnt uppercase">
-                  INDIA // GLOBAL HEADQUARTERS
-                </span>
-                <span className="text-[10px] font-mono text-charcoal/50">HQ</span>
+            <TiltCard tiltDegree={5}>
+              <div className="p-6 rounded-3xl bg-sand/30 border border-sand/80 space-y-3 shadow-sm">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-mono font-bold text-burnt uppercase">
+                    INDIA // GLOBAL HEADQUARTERS
+                  </span>
+                  <span className="text-[10px] font-mono text-charcoal/50">HQ</span>
+                </div>
+                <p className="font-body text-xs text-charcoal leading-snug">
+                  Novus Apparel Limited<br />
+                  #23, Siva Arcade (3rd Floor), 29th Main, 1st Cross, 1st Stage, BTM Layout<br />
+                  Bangalore – 560068, Karnataka, India
+                </p>
+                <div className="pt-2 border-t border-sand flex flex-wrap gap-4 text-xs font-mono">
+                  <a
+                    href="tel:+919980812727"
+                    className="text-charcoal hover:text-burnt font-semibold"
+                  >
+                    +91 99808 12727
+                  </a>
+                  <a
+                    href="mailto:chaand@novusapparels.com"
+                    className="text-olive hover:text-burnt"
+                  >
+                    chaand@novusapparels.com
+                  </a>
+                </div>
               </div>
-              <p className="font-body text-xs text-charcoal leading-snug">
-                Novus Apparel Limited<br />
-                #23, Siva Arcade (3rd Floor), 29th Main, 1st Cross, 1st Stage, BTM Layout<br />
-                Bangalore – 560068, Karnataka, India
-              </p>
-              <div className="pt-2 border-t border-sand flex flex-wrap gap-4 text-xs font-mono">
-                <a href="tel:+919980812727" className="text-charcoal hover:text-burnt font-semibold">
-                  +91 99808 12727
-                </a>
-                <a href="mailto:chaand@novusapparels.com" className="text-olive hover:text-burnt">
-                  chaand@novusapparels.com
-                </a>
-              </div>
-            </div>
+            </TiltCard>
 
             {/* USA Node */}
-            <div className="p-6 rounded-2xl bg-sand/30 border border-sand/80 space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-mono font-bold text-burnt uppercase">
-                  UNITED STATES // CLIENT RELATIONS
-                </span>
-                <span className="text-[10px] font-mono text-charcoal/50">AMERICAS</span>
+            <TiltCard tiltDegree={5}>
+              <div className="p-6 rounded-3xl bg-sand/30 border border-sand/80 space-y-3 shadow-sm">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-mono font-bold text-burnt uppercase">
+                    UNITED STATES // CLIENT RELATIONS
+                  </span>
+                  <span className="text-[10px] font-mono text-charcoal/50">AMERICAS</span>
+                </div>
+                <p className="font-body text-xs text-charcoal leading-snug">
+                  Novus Apparel Limited<br />
+                  Suite #1, 825 Georges Rd<br />
+                  North Brunswick, NJ – 08902, United States
+                </p>
+                <div className="pt-2 border-t border-sand text-xs font-mono">
+                  <a
+                    href="mailto:chaand@novusapparels.com"
+                    className="text-olive hover:text-burnt"
+                  >
+                    chaand@novusapparels.com
+                  </a>
+                </div>
               </div>
-              <p className="font-body text-xs text-charcoal leading-snug">
-                Novus Apparel Limited<br />
-                Suite #1, 825 Georges Rd<br />
-                North Brunswick, NJ – 08902, United States
-              </p>
-              <div className="pt-2 border-t border-sand text-xs font-mono">
-                <a href="mailto:chaand@novusapparels.com" className="text-olive hover:text-burnt">
-                  chaand@novusapparels.com
-                </a>
-              </div>
-            </div>
+            </TiltCard>
 
             {/* China Node */}
-            <div className="p-6 rounded-2xl bg-sand/30 border border-sand/80 space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-mono font-bold text-burnt uppercase">
-                  CHINA // TECHNICAL SOURCING & R&D
-                </span>
-                <span className="text-[10px] font-mono text-charcoal/50">EAST ASIA</span>
+            <TiltCard tiltDegree={5}>
+              <div className="p-6 rounded-3xl bg-sand/30 border border-sand/80 space-y-3 shadow-sm">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-mono font-bold text-burnt uppercase">
+                    CHINA // TECHNICAL SOURCING & R&D
+                  </span>
+                  <span className="text-[10px] font-mono text-charcoal/50">EAST ASIA</span>
+                </div>
+                <p className="font-body text-xs text-charcoal leading-snug">
+                  Novus Apparel Limited / Newwell Textiles<br />
+                  Room #1109, Yuzhou Plaza #299, Jingang Road, Pudong New District<br />
+                  Shanghai – 201206, China
+                </p>
+                <div className="pt-2 border-t border-sand flex flex-wrap gap-4 text-xs font-mono">
+                  <a
+                    href="tel:+8602168970132"
+                    className="text-charcoal hover:text-burnt font-semibold"
+                  >
+                    +86-021-68970132
+                  </a>
+                  <a
+                    href="mailto:chaand@novusapparels.com"
+                    className="text-olive hover:text-burnt"
+                  >
+                    chaand@novusapparels.com
+                  </a>
+                </div>
               </div>
-              <p className="font-body text-xs text-charcoal leading-snug">
-                Novus Apparel Limited / Newwell Textiles<br />
-                Room #1109, Yuzhou Plaza #299, Jingang Road, Pudong New District<br />
-                Shanghai – 201206, China
-              </p>
-              <div className="pt-2 border-t border-sand flex flex-wrap gap-4 text-xs font-mono">
-                <a href="tel:+8602168970132" className="text-charcoal hover:text-burnt font-semibold">
-                  +86-021-68970132
-                </a>
-                <a href="mailto:chaand@novusapparels.com" className="text-olive hover:text-burnt">
-                  chaand@novusapparels.com
-                </a>
-              </div>
-            </div>
+            </TiltCard>
           </div>
         </div>
       </div>

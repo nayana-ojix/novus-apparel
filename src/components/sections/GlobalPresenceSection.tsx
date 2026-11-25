@@ -4,7 +4,19 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { MapPin, Phone, Mail, Clock, ArrowUpRight, CheckCircle2, Globe2 } from "lucide-react";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  ArrowUpRight,
+  CheckCircle2,
+  Globe2,
+  Navigation,
+} from "lucide-react";
+import TiltCard from "@/components/motion/TiltCard";
+import MagneticButton from "@/components/motion/MagneticButton";
+import KineticText from "@/components/motion/KineticText";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -106,7 +118,8 @@ export default function GlobalPresenceSection() {
     return () => clearInterval(interval);
   }, []);
 
-  const currentOffice = VERIFIED_OFFICES.find((o) => o.id === selectedOffice) || VERIFIED_OFFICES[0];
+  const currentOffice =
+    VERIFIED_OFFICES.find((o) => o.id === selectedOffice) || VERIFIED_OFFICES[0];
 
   return (
     <section
@@ -119,21 +132,28 @@ export default function GlobalPresenceSection() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-8 border-b border-sand/70">
           <div className="space-y-3 max-w-2xl">
             <div className="flex items-center gap-2.5">
-              <span className="w-2 h-2 rounded-full bg-burnt" />
+              <span className="w-2.5 h-2.5 rounded-full bg-burnt animate-pulse" />
               <span className="text-[11px] font-mono uppercase tracking-ultra text-burnt font-bold">
                 SECTION 08 // GLOBAL PRESENCE
               </span>
             </div>
             <h2 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold uppercase tracking-tight text-charcoal leading-[0.98]">
-              THREE CONTINENTS. <br />
-              <span className="text-olive">SYNCHRONIZED OPERATIONS.</span>
+              <KineticText type="words" delay={0.1} stagger={0.06}>
+                THREE CONTINENTS.
+              </KineticText>{" "}
+              <br />
+              <span className="text-olive">
+                <KineticText type="words" delay={0.35} stagger={0.06}>
+                  SYNCHRONIZED OPERATIONS.
+                </KineticText>
+              </span>
             </h2>
             <p className="font-body text-base sm:text-lg text-charcoal/70 font-light leading-relaxed">
               NOVUS maintains verified commercial, technical, and client relations operations across India, the United States, and China.
             </p>
           </div>
 
-          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-charcoal/60">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-charcoal/70 font-semibold">
             <Globe2 className="w-4 h-4 text-olive" />
             <span>INDIA // USA // CHINA</span>
           </div>
@@ -144,42 +164,45 @@ export default function GlobalPresenceSection() {
           {VERIFIED_OFFICES.map((off) => {
             const isSelected = selectedOffice === off.id;
             return (
-              <button
-                key={off.id}
-                onClick={() => setSelectedOffice(off.id)}
-                className={`p-6 sm:p-8 rounded-3xl text-left transition-all duration-300 border flex flex-col justify-between space-y-6 ${
-                  isSelected
-                    ? "bg-cream border-charcoal shadow-md scale-[1.01]"
-                    : "bg-cream/60 hover:bg-cream border-sand/80 text-charcoal/70"
-                }`}
-              >
-                <div className="flex items-start justify-between">
-                  <div className="space-y-1">
-                    <span className={`text-[10px] font-mono uppercase tracking-widest px-2.5 py-0.5 rounded-full font-bold ${
-                      isSelected ? "bg-burnt text-cream" : "bg-sand text-charcoal/60"
-                    }`}>
-                      {off.tag}
-                    </span>
-                    <h3 className="font-display text-2xl font-bold text-charcoal uppercase tracking-tight pt-1">
-                      {off.city}
-                    </h3>
-                    <p className="text-xs font-mono text-olive font-semibold">
-                      {off.country}
-                    </p>
+              <TiltCard key={off.id} tiltDegree={5}>
+                <button
+                  onClick={() => setSelectedOffice(off.id)}
+                  className={`w-full p-6 sm:p-8 rounded-3xl text-left transition-all duration-300 border flex flex-col justify-between space-y-6 h-full ${
+                    isSelected
+                      ? "bg-cream border-charcoal shadow-md scale-[1.01]"
+                      : "bg-cream/60 hover:bg-cream border-sand/80 text-charcoal/70"
+                  }`}
+                >
+                  <div className="flex items-start justify-between w-full">
+                    <div className="space-y-1">
+                      <span
+                        className={`text-[10px] font-mono uppercase tracking-widest px-2.5 py-0.5 rounded-full font-bold ${
+                          isSelected ? "bg-burnt text-cream" : "bg-sand text-charcoal/60"
+                        }`}
+                      >
+                        {off.tag}
+                      </span>
+                      <h3 className="font-display text-2xl font-bold text-charcoal uppercase tracking-tight pt-1">
+                        {off.city}
+                      </h3>
+                      <p className="text-xs font-mono text-olive font-bold">
+                        {off.country}
+                      </p>
+                    </div>
+
+                    <div className="text-right">
+                      <Clock className="w-4 h-4 text-charcoal/40 ml-auto mb-1" />
+                      <span className="font-mono text-xs text-charcoal font-semibold block">
+                        {times[off.id] || "Active"}
+                      </span>
+                    </div>
                   </div>
 
-                  <div className="text-right">
-                    <Clock className="w-4 h-4 text-charcoal/40 ml-auto mb-1" />
-                    <span className="font-mono text-xs text-charcoal/70 block">
-                      {times[off.id] || "Active"}
-                    </span>
+                  <div className="pt-4 border-t border-sand/70 text-xs font-body text-charcoal/70 font-light line-clamp-2 w-full">
+                    {off.role}
                   </div>
-                </div>
-
-                <div className="pt-4 border-t border-sand/70 text-xs font-body text-charcoal/60 font-light line-clamp-2">
-                  {off.role}
-                </div>
-              </button>
+                </button>
+              </TiltCard>
             );
           })}
         </div>
@@ -202,13 +225,16 @@ export default function GlobalPresenceSection() {
               </div>
 
               {/* Physical Address */}
-              <div className="p-6 rounded-2xl bg-sand/30 border border-sand space-y-2">
+              <div className="p-6 rounded-2xl bg-sand/30 border border-sand space-y-2 shadow-sm">
                 <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-charcoal/60 font-semibold mb-1">
                   <MapPin className="w-4 h-4 text-burnt" />
                   <span>Physical Address</span>
                 </div>
                 {currentOffice.address.map((line, idx) => (
-                  <p key={idx} className="font-body text-sm text-charcoal font-medium leading-snug">
+                  <p
+                    key={idx}
+                    className="font-body text-sm text-charcoal font-medium leading-snug"
+                  >
                     {line}
                   </p>
                 ))}
@@ -217,7 +243,7 @@ export default function GlobalPresenceSection() {
               {/* Direct Communication Channels */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {currentOffice.phone && (
-                  <div className="p-4 rounded-xl bg-sand/30 border border-sand">
+                  <div className="p-4 rounded-xl bg-sand/30 border border-sand shadow-sm">
                     <span className="text-[10px] font-mono uppercase tracking-wider text-charcoal/50 block mb-1">
                       Direct Telephone
                     </span>
@@ -231,7 +257,7 @@ export default function GlobalPresenceSection() {
                   </div>
                 )}
 
-                <div className="p-4 rounded-xl bg-sand/30 border border-sand">
+                <div className="p-4 rounded-xl bg-sand/30 border border-sand shadow-sm">
                   <span className="text-[10px] font-mono uppercase tracking-wider text-charcoal/50 block mb-1">
                     Enquiry Email
                   </span>
@@ -248,31 +274,33 @@ export default function GlobalPresenceSection() {
 
             {/* Right Map Graphic & Synchronized Timezone (5 cols) */}
             <div className="lg:col-span-5 space-y-4">
-              <div className="p-6 rounded-2xl bg-charcoal text-cream space-y-4">
-                <div className="flex items-center justify-between border-b border-cream/15 pb-4">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-burnt-light font-bold">
-                    OPERATIONAL TIMEZONE
-                  </span>
-                  <span className="text-xs font-mono text-cream/60">
-                    UTC {currentOffice.utcOffset >= 0 ? `+${currentOffice.utcOffset}` : currentOffice.utcOffset}
-                  </span>
-                </div>
-
-                <div className="space-y-1">
-                  <div className="font-mono text-3xl sm:text-4xl font-bold text-cream">
-                    {times[currentOffice.id] || "Loading..."}
+              <TiltCard tiltDegree={6}>
+                <div className="p-6 sm:p-8 rounded-3xl bg-charcoal text-cream space-y-5 shadow-md">
+                  <div className="flex items-center justify-between border-b border-cream/15 pb-4">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-burnt-light font-bold">
+                      OPERATIONAL TIMEZONE
+                    </span>
+                    <span className="text-xs font-mono text-cream/70">
+                      UTC {currentOffice.utcOffset >= 0 ? `+${currentOffice.utcOffset}` : currentOffice.utcOffset}
+                    </span>
                   </div>
-                  <p className="text-xs text-cream/60 font-light">
-                    Local active business time in {currentOffice.city}
-                  </p>
-                </div>
 
-                <div className="pt-4 border-t border-cream/15 text-xs text-cream/70 font-light">
-                  Direct liaison connecting our Bangalore headquarters, New Jersey client relations, and Shanghai technical sourcing division.
-                </div>
-              </div>
+                  <div className="space-y-1">
+                    <div className="font-mono text-3xl sm:text-4xl font-bold text-cream tracking-tight">
+                      {times[currentOffice.id] || "Active"}
+                    </div>
+                    <p className="text-xs text-cream/65 font-light">
+                      Local active business time in {currentOffice.city}
+                    </p>
+                  </div>
 
-              <div className="p-4 rounded-xl bg-sand/40 border border-sand text-xs font-mono uppercase tracking-wider text-charcoal/60 text-center">
+                  <div className="pt-4 border-t border-cream/15 text-xs text-cream/75 font-light leading-relaxed">
+                    Direct liaison connecting our Bangalore headquarters, New Jersey client relations, and Shanghai technical sourcing division.
+                  </div>
+                </div>
+              </TiltCard>
+
+              <div className="p-4 rounded-xl bg-sand/40 border border-sand text-xs font-mono uppercase tracking-wider text-charcoal/70 text-center font-semibold">
                 Three Verified Strategic Nodes
               </div>
             </div>
